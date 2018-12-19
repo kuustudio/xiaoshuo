@@ -9,6 +9,6 @@
 return [
     'url' => 'http://www.hanman.co',
     'site_name' => '言情小说吧',
-    'admin' => 'hiliqi',
-    'password' => 'aiguo999',
+    'admin' => 'admin',
+    'password' => '123456',
 ];
