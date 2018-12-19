@@ -1,0 +1,44 @@
+{extend name="pub/base" /}
+{block name="content"}
+<div class="x-body">
+    <form class="layui-form" action="{:url('welcome')}" method="post">
+        <div class="layui-form-item">
+            <label class="layui-form-label">
+                <span class="x-red">*</span>站点名称
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" name="site_name" value="{$site_name}" required="" lay-verify="required" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item" width="60%">
+            <label class="layui-form-label">
+                <span class="x-red">*</span>网站域名
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" name="url" value="{$url}" required="" lay-verify="required" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">
+                <span class="x-red">*</span>管理员账号
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" name="admin" value="{$admin}" required="" lay-verify="required" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">
+                <span class="x-red">*</span>管理员密码
+            </label>
+            <div class="layui-input-inline">
+                <input type="password" name="password" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label"></label>
+            <input type="submit" class="layui-btn" value="保存">
+        </div>
+    </form>
+</div>
+{/block}

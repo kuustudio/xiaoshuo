@@ -1,0 +1,35 @@
+{extend name="pub/base" /}
+{block name="content"}
+<div class="x-body">
+    <form class="layui-form" action="{:url('save')}" method="post" enctype="multipart/form-data">
+        <input type="hidden" value="{$book_id}" name="book_id">
+        <div class="layui-form-item">
+            <label class="layui-form-label">
+                <span class="x-red">*</span>章节名
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" name="chapter_name" required="" lay-verify="required" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">
+                内容
+            </label>
+            <div class="layui-input-inline">
+                <textarea placeholder="请输入内容" cols="100" rows="10" id="area1" name="content" class="layui-textarea"></textarea>
+            </div>
+            <script src="/static/js/nicEdit.js"></script>
+            <script type="text/javascript">
+                bkLib.onDomLoaded(function() {
+                    new nicEditor({iconsPath : '/static/images/nicEditorIcons.gif'}).panelInstance('area1');
+                });
+            </script>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label"></label>
+            <input type="submit" class="layui-btn" value="增加">
+        </div>
+    </form>
+</div>
+{/block}

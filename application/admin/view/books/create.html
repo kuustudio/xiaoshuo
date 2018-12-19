@@ -1,0 +1,60 @@
+{extend name="pub/base" /}
+{block name="content"}
+<div class="x-body">
+    <form class="layui-form" action="{:url('save')}" method="post" enctype="multipart/form-data">
+        <div class="layui-form-item">
+            <label class="layui-form-label">
+                <span class="x-red">*</span>书名
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" name="book_name" required="" lay-verify="required" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">
+                <span class="x-red">*</span>标签
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" name="tag" required="" lay-verify="required" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">
+                作者
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" name="author" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">封面</label>
+            <div class="layui-input-inline">
+                <input type="file" name="cover" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">
+                简介
+            </label>
+            <div class="layui-input-block">
+                <textarea placeholder="请输入内容" name="summary" class="layui-textarea"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">
+                状态
+            </label>
+            <div class="layui-input-inline">
+                <select id="shipping" name="end" class="valid">
+                    <option value="-1">连载中</option>
+                    <option value="1">已完结</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label"></label>
+            <input type="submit" class="layui-btn" value="增加">
+        </div>
+    </form>
+</div>
+{/block}

@@ -1,0 +1,42 @@
+{extend name="pub/base" /}
+{block name="content"}
+<div class="x-body">
+    <xblock>
+
+        <span class="x-right" style="line-height:40px">共有数据：{$count} 条</span>
+    </xblock>
+    <table class="layui-table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>作者名</th>
+            <th>更新时间</th>
+            <th>创建时间</th>
+            <th>操作</th>
+        </thead>
+        <tbody>
+        {volist name="authors" id="vo"}
+        <tr class="text-c">
+            <td>{$vo.id}</td>
+            <td>{$vo.author_name}</td>
+            <td>{$vo.update_time}</td>
+            <td>{$vo.create_time}</td>
+            <td class="td-manage">
+                <a title="编辑"  onclick="x_admin_show('编辑','edit?id={$vo.id}')" href="javascript:;">
+                    <i class="layui-icon">&#xe642;</i>
+                </a>
+                <a title="删除" onclick="del('{:url("authors/delete",["id"=>$vo.id])}')" href="javascript:;">
+                    <i class="layui-icon">&#xe640;</i>
+                </a>
+            </td>
+        </tr>
+        {/volist}
+        </tbody>
+    </table>
+    <div class="page">
+        <div>
+            {$authors|raw}
+        </div>
+    </div>
+</div>
+{/block}

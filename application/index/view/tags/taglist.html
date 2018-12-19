@@ -1,0 +1,58 @@
+{extend name="pub/mbase" /}
+{block name="css"}
+<style>
+    #categorylist {
+        width: 100%;
+    }
+    #categorylist li {
+        height: 0.931875rem;
+        line-height: 0.931875rem;
+        margin-bottom: 0.079875rem;
+        font-size: 0.3195rem;
+        color: #666;
+        padding: 0 0.26625rem 0 0.5325rem;
+        text-align: right;
+        background: #fff;
+    }
+    #categorylist li:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    #categorylist li > a {
+        display: block;
+    }
+    #categorylist .name {
+        font-family: 'Microsoft YaHei';
+        font-weight: bolder;
+        font-size: 0.399375rem;
+        float: left;
+    }
+</style>
+{/block}
+{block name="content"}
+<div class="bg-gray before-banner-footer" style="padding-top:0.3195rem">
+    <ul id="categorylist">
+        <li>
+            <a href="{:url('tags/index')}">
+                <span class="name">全部</span>
+                <span>共{$all_count}本作品<i class="iconfont icon-arrow-right"></i></span>
+            </a>
+        </li>
+        <li>
+            <a  href="/index/tags/index?order=last_time&end=1">
+                <span class="name">完本</span>
+                <span>共{$end_count}本作品<i class="iconfont icon-arrow-right"></i></span>
+            </a>
+        </li>
+        {volist name="tags" id="vo"}
+        <li>
+            <a href="/index/tags/index?order=last_time&tag={$vo.tag_name}">
+                <span class="name">{$vo.tag_name}</span>
+                <span>共{$vo.count}本作品<i class="iconfont icon-arrow-right"></i></span>
+            </a>
+        </li>
+        {/volist}
+    </ul>
+</div>
+{/block}

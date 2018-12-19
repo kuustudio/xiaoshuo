@@ -1,0 +1,268 @@
+{extend name="pub/mbase" /}
+{block name="css"}
+<style>
+    body{
+        background-color: #fff;
+    }
+    .darkTheme {
+        color: #a26969;
+        background: rgba(0, 0, 0, 0.25);
+    }
+    .container {
+        background: transparent;
+    }
+    .article-title {
+        padding-left:  0.37275rem;
+        font-size:  0.47925rem;
+    }
+    .article-content {
+        line-height: 1.8;
+        font-size:  0.399375rem;
+        margin: 0.639rem 0 0.5325rem 0;
+        min-height: 10rem;
+    }
+    .article-content p.chapter {
+        position: relative;
+        margin: 0;
+        padding: 0.1065rem 0;
+    }
+    .read-bd .num{
+        display: none;
+    }
+    .read-bd p.chapter img {
+        display: block;
+        max-width: 100%;
+        margin: 8px auto;
+    }
+    .footer .btn {
+        width: 28%;
+        margin-bottom: 3%;
+    }
+    .pop-footer, #header {
+        position: fixed;
+        left: 0;
+        width: 100%;
+        z-index: 10;
+    }
+    #header {
+        top: 0;
+    }
+    #header .iconfont {
+        font-size: 0.505875rem;
+    }
+    .pop-footer {
+        border-top:1px solid #e6e6e6;
+        bottom: 0;
+        height: 1.33125rem;
+        color: #fff;
+        line-height: 1.2;
+        padding-top: 0.15975rem;
+    }
+    .pop-footer > :nth-child(n) {
+        text-align: center;
+        font-size: 0.3195rem;
+        width: 25%;
+        display: inline-block;
+        float: left;
+    }
+    .pop-footer .iconfont {
+        font-size: 0.505875rem;
+    }
+    .pop-footer input[type='checkbox'] {
+        display: none;
+    }
+    #addToBookshelf {
+        position: fixed;
+        display: none;
+        top:  1.837125rem;
+        right: 0;
+        width: auto;
+        z-index: 10;
+        padding: 0 0.505875rem;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    .book-more-menu{
+        position: fixed;
+        display: none;
+        top: 1.6rem;
+        right: 0;
+        width: 3.6rem;
+        z-index: 99;
+        background: #fa7298;
+        color: #ffffff;
+        font-size: 0.34rem;
+    }
+    .book-more-menu .menu-list li{
+        padding: 0 0.3rem;
+        height: 0.8rem;
+        line-height: 0.8rem;
+        border-bottom: 1px solid #e6e6e6;
+    }
+    .auto-buy-bg.on {
+        background-color: #fa7298;
+    }
+    .auto-buy-bg.on .btn-auto-buy {
+        left: 0.39rem;
+    }
+    .auto-buy-bg .btn-auto-buy {
+        display: block;
+        position: absolute;
+        /* top: 0.0rem; */
+        left: 0.01rem;
+        width: 0.35rem;
+        height: 0.35rem;
+        background-color: #fff;
+        -webkit-box-shadow: 0 0 3px rgba(0,0,0,.5);
+        -moz-box-shadow: 0 0 3px rgba(0,0,0,.5);
+        box-shadow: 0 0 3px rgba(0,0,0,.5);
+        border-radius: 50%;
+    }
+    .auto-buy-bg {
+        position: absolute;
+        border: 1px solid #ccc;
+        right: 0.25rem;
+        top: 0.2rem;
+        width: 0.8rem;
+        height: 0.4rem;
+        background-color: #ccc;
+        border-radius: 0.4rem;
+    }
+    .settings-box {
+        display: none;
+        width: 100%;
+        position: fixed;
+        bottom: 1.33125rem;
+        left: 0;
+        background: #fa7298;
+        color: #fff;
+        z-index: 10;
+    }
+    .settings-box .dl-font-size {
+        height: 1.375rem;
+        font-size: 0.46875rem;
+        line-height: 1.375rem;
+    }
+    .settings-box .inner-box {
+        padding: 0 0.46875rem;
+        border-bottom: 1px solid #e6e6e6;
+    }
+    .dl-font-size > a.small {
+        margin-right: 0.3125rem;
+    }
+    .dl-font-size > a {
+        display: inline-block;
+        width: 2.53125rem;
+        height: 0.90625rem;
+        margin-top: 0.21875rem;
+        font-size: 0.46875rem;
+        color: #666;
+        text-align: center;
+        line-height: 0.90625rem;
+        background-color: #ffffff;
+        border: 1px solid #666;
+        border-radius: 0.15625rem;
+    }
+    .dl-theme a {
+        display: block;
+        float: left;
+        width: 1.25rem;
+        margin: 0.46875rem 0.6875rem 0 0;
+        padding-bottom: 0.375rem;
+        font-size: 0.375rem;
+        color: #ffffff;
+        text-align: center;
+    }
+    .dl-theme a:last-child {
+        margin-right: 0;
+    }
+    .dl-theme a span {
+        display: block;
+        width: 1.1875rem;
+        height: 1.1875rem;
+        margin-bottom: 0.15625rem;
+        padding: 1px;
+        background-color: #F6F6F6;
+        border: 1px solid #F6F6F6;
+        border-radius: 50%;
+    }
+    .dl-theme a.pink span {
+        background-color: #ffe8e8;
+    }
+    .dl-theme a.green span {
+        background-color: #eaffd4;
+    }
+    .dl-theme a.yellow span {
+        background-color: #fff3d9;
+    }
+    .dl-theme a.night span {
+        background-color: #666;
+    }
+    .dl-theme a.act span:before {
+        font-family:"iconfont" !important;
+        font-size:0.6rem;
+        color: #fa7298;
+        font-style:normal;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        content: "\e775";
+    }
+    .pages .btn.no {
+        background: #b4b4b4 none repeat scroll 0 0;
+    }
+
+    #footer_action {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 0.59375rem 0.46875rem 5.76875rem;
+        font-size: 0.4375rem;
+        color: #828282;
+        text-align: center;
+        background: #fff;
+        border-top: 1px solid #e6e6e6;
+    }
+</style>
+{/block}
+{block name="content"}
+<div class="container">
+    <p style="padding: 0 0.26625rem; line-height: 1.33125rem">
+        <span class="small text-muted">{$chapter.chapter_name}</span>
+    </p>
+    <div class="article-title">{$chapter.chapter_name}</div>
+    <div class="article-content" id="J_BookCnt">
+        <div class="read-bd" id="J_BookRead" style="font-size: 16px;">
+            {$content|raw}
+        </div>
+    </div>
+</div>
+<div class="footer text-center pages">
+    {if $prev != "null"}
+    <button onclick="javascript:location.href='{:url(\'chapters/index\',[\'id\'=>$prev.id])}';" class="btn btn-primary btn-large">上一章</button>
+    {/if}
+    <button class="btn btn-primary btn-large no" onclick="javascript:location.href='{:url(\'books/index\',[\'id\'=>$chapter.book_id])}';">回目录</button>
+    {if $next != "null"}
+    <button class="btn btn-primary btn-large" onclick="javascript:location.href='{:url(\'chapters/index\',[\'id\'=>$next.id])}'">下一章</button>
+    {/if}
+</div>
+<script>
+    bookshelf = [];
+    bookshelf[0] = {$chapter.book_id};
+    bookshelf[1] = '{$chapter.book.book_name}';
+    bookshelf[2] = {$chapter.id};
+    bookshelf[3] = '{$chapter.chapter_name}';
+    bookshelf[4] = '{$chapter.book.author.author_name}';
+    bookshelf[5] = '{$chapter.book.summary}';
+    window.localStorage.setItem('novel_id' + {$chapter.book_id}, JSON.stringify(bookshelf));
+
+    document.body.oncopy = function (){return false;}; //阻止复制
+    document.body.onselectstart = function() {return false;}; //阻止选中
+    document.oncontextmenu = function() {return false;}; //阻止菜单弹出
+    if(document.images){
+        for(i=0;i<document.images.length;i++){
+            document.images[i].onmousedown = function() {return false;};
+        }
+    }
+</script>
+{/block}

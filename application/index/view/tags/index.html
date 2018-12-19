@@ -1,0 +1,132 @@
+{extend name="pub/base" /}
+{block name="css"}
+<style>
+    .filters {
+        margin: 20px;
+    }
+    .filter {
+        margin-bottom: 15px;
+        font-size: 14px;
+    }
+    .filter .btn {
+        height: 24px;
+        line-height: 24px;
+        font-size: 12px;
+        border: solid 1px #bbbbbb;
+        background: #fff;
+        width: 64px;
+        padding: 0;
+        border-radius: 3px;
+        margin-right: 20px;
+        text-align: center;
+        display: inline-block;
+    }
+    .filter .btn.active {
+        background: #fa7298;
+        color: #fff;
+    }
+    .options {
+        width: 100%;
+        border-bottom: solid 1px #bbbbbb;
+    }
+    .options button {
+        width: 100px;
+        height: 20px;
+        padding: 0 16px;
+        text-align: center;
+        background: #eeeeee;
+        color: #aaaaaa;
+        font-size: 12px;
+        border: none;
+        border-radius: 3px;
+        margin-right: 20px;
+    }
+    .books-section {
+        margin: 20px 56px 0 56px;
+    }
+    .book-list li {
+        width: 126px;
+        margin: 0 10px 25px;
+    }
+    .book-list .thumb {
+        height: 168px;
+    }
+</style>
+{/block}
+{block name="content"}
+<div class="filters">
+    <div class="filter" name="range" id="tag_select">
+        <label>分类：</label>
+        <button class="btn" value="" onclick="changeActive(this);">全部</button>
+        {volist name="tags" id="vo"}
+        <button class="btn {$vo.active == 1 ? 'active' : ''}" value="{$vo.tag_name}" onclick="changeActive(this);">{$vo.tag_name}</button>
+        {/volist}
+    </div>
+    <div class="filter toggle" name="order" id="order_select">
+        <label>排序：</label>
+        <button class="btn {$order == 'click' ? 'active' : ''}" value="click" onclick="changeActive(this);">人气</button>
+        <button class="btn {$order == 'last_time' ? 'active' : ''}" value="last_time" onclick="changeActive(this);">更新时间</button>
+    </div>
+    <div class="filter toggle" name="finished" id="end_select">
+        <label>状态：</label>
+        <button class="btn" value="" onclick="changeActive(this);">不限</button>
+        <button class="btn {$end == '1' ? 'active' : ''}" value="1" onclick="changeActive(this);">已完结</button>
+        <button class="btn {$end == '-1' ? 'active' : ''}" value="-1" onclick="changeActive(this);">连载中</button>
+    </div>
+    <div class="filter toggle">
+        <button class="btn active" style="width: 100%" onclick="jump();">确定</button>
+    </div>
+</div>
+<div class="options text-center">
+    <button style="display:none;" id="expandBtn"><span class="icon-expand"></span>展开分类</button>
+    <button id="collapseBtn"><span class="icon-collaspe"></span>折叠分类</button>
+</div>
+<script>
+    function changeActive(obj) {
+        $(obj).addClass("active").siblings("button").removeClass("active");
+    }
+    function jump() {
+        var tag = $('#tag_select button.active').val()==undefined?'':$('#tag_select button.active').val();
+        var order = $('#order_select button.active').val();
+        var end = $('#end_select button.active').val()==undefined?'':$('#end_select button.active').val();
+        location.href = "/index/tags/index?tag=" + tag + "&order=" + order + "&end=" + end;
+    }
+    //折叠搜索条件
+    //备注： 如果想要全部折叠、或者部分折叠，
+    //      只要在那条“filter”元素上添加class"toggle"即可，
+    //      根据你们的需求自行可以增删搜索的条件
+    $("#collapseBtn").click(function() {
+        $("#expandBtn").show();
+        $("#collapseBtn").hide();
+        $(".filter.toggle").hide();
+    })
+    $("#expandBtn").click(function() {
+        $("#collapseBtn").show();
+        $("#expandBtn").hide();
+        $(".filter.toggle").show()
+    })
+</script>
+<div class="books-section">
+    <ul class="book-list J_BookList">
+        {volist name="books" id="vo"}
+        <li>
+            <a href="{:url('books/index',['id'=>$vo.id])}" target="_blank" class="thumb">
+                <img data-sizes="108px" alt="{$vo.book_name}" class="lazyload  cover" src="/static/upload/book/{$vo.id}/cover.jpg">
+                <div class="book-overlay-info">
+                    <div class="avatar">
+                        <img class="lazyload" src="http://avatar.shubl.com/novel/img-2018-08/1362992/avatar/thumb_669f6c0d6b9c8adca31b9e91515ae7df.jpg">
+                        {$vo.author.author_name}
+                    </div>
+                    <p class="m-t">人气：{$vo.click}</p>
+                </div>
+            </a>
+            <a href="{:url('books/index',['id'=>$vo.id])}" target="_blank" class="title title-l2">{$vo.book_name}</a>
+        </li>
+        {/volist}
+    </ul>
+    <div class="page">
+        {$books|raw}
+    </div>
+</div>
+
+{/block}

@@ -1,0 +1,515 @@
+{extend name="pub/base" /}
+{block name="css"}
+<style>
+    .row .left {
+        width: 74%;
+        float: left;
+    }
+
+    .row .right {
+        float: right;
+        margin-left: 3%;
+        width: 22%;
+    }
+
+    .book-info2-box {
+        position: relative;
+        margin: 0.625rem 0;
+    }
+
+    .book-info2-box::after {
+        display: table;
+        content: '';
+        clear: both;
+    }
+
+    .book-info2-box .icon-point {
+        color: #fa7298;
+        padding-right: 4px;
+    }
+
+    .book-img {
+        top: 0;
+        left: 0;
+        position: absolute;
+        width: 180px;
+        height: 240px;
+        margin-right: 18px;
+    }
+
+    .book-info2 {
+        font-size: 0.75rem;
+        margin-left: 200px;
+    }
+
+    .book-info2:after {
+        display: table;
+        clear: both;
+        content: '';
+    }
+
+    .tag {
+        /*width: 2.375rem;*/
+        height: 1.25rem;
+        line-height: 1.25rem;
+        border: solid 1px #999999;
+        border-radius: 3px;
+        font-size: 0.75rem;
+        text-align: center;
+        float: left;
+        padding: 0 0.25rem;
+        margin-bottom: 10px;
+    }
+
+    .tag + .tag {
+        margin-left: 0.625rem;
+    }
+
+    .book-title {
+        margin: 0.375rem 0 1.125rem 0;
+        font-size: 1.25rem;
+        line-height: 1.5rem;
+    }
+
+    .book-title .tag {
+        border: none;
+        color: #fff;
+    }
+
+    .tag-lianzai {
+        background: #ffc592;
+    }
+
+    .tag-qianyue {
+        background: #99c5fc;
+        margin: 0 0.375rem;
+    }
+
+    .book-info2-numbers > span {
+        display: inline;
+        float: left;
+        line-height: 0.875rem;
+        margin-right: 1rem;
+    }
+
+    .book-brief {
+        margin: 0.625rem 0;
+        height: 62px;
+        line-height: 1rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-break: break-all;
+    }
+
+    .box {
+        border: solid 1px #eee;
+        padding: 0.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .chapter-list {
+        padding: 2rem 0.75rem;
+    }
+
+    .chapter-title, .articles > span {
+        position: relative;
+        display: block;
+        padding-left: 0.685em;
+        font-size: 0.875rem;
+    }
+
+    .articles {
+        margin: 1rem 0 1.5rem 1rem;
+    }
+
+    .articles > span {
+        height: 2rem;
+        font-size: .75rem;
+        width: 25%;
+        float: left;
+        padding-bottom: 0.625rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    hr {
+        clear: both;
+        border: solid 1px #eee;
+        border-top: none;
+        margin: 0.625rem 0;
+    }
+
+    .chapter-title:before, .articles > span:before {
+        position: absolute;
+        display: block;
+        top: 0.15rem;
+        left: 0;
+        content: '';
+        background: #fa7298;
+        width: 0.3em;
+        height: 0.875em;
+        border-radius: 0.15em;
+    }
+
+    .articles > span:before {
+        border-radius: 0
+    }
+
+    .chapter:after, .articles:after {
+        display: table;
+        clear: both;
+        content: '';
+    }
+
+    .user-info {
+        line-height: 1.42857143;
+    }
+
+    .user-info .short_username {
+        max-width: 30%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .member-list .avatar > img {
+        width: 32px;
+        height: 32px;
+    }
+
+    .member-list .user-info {
+        margin: 0.375rem 0;
+        color: #fa7298;
+        font-size: 0.75rem;
+        line-height: 32px !important;
+    }
+
+    #tabs::before {
+        position: relative;
+        display: none;
+    }
+
+    .ui-widget-header {
+        text-indent: 0;
+    }
+
+    .ui-tabs .ui-tabs-nav li {
+        margin-right: 2.875rem;
+    }
+
+    .ui-tabs .ui-tabs-nav li a {
+        padding: 0 !important;
+        margin-bottom: 2px;
+    }
+
+    .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {
+        color: #fa7298 !important;
+        border-bottom: solid 3px #fa7298;
+    }
+
+    .number {
+        position: absolute;
+        top: 0;
+        right: 10px;
+    }
+
+    .comment-input-row {
+        position: relative;
+        padding: 20px 0 18px 0;
+    }
+
+    .comment-input-box:after {
+        clear: both;
+        display: table;
+        content: '';
+    }
+
+    .comment-input-box .comment-input {
+        width: 100%;
+        background-color: #f9f9f9;
+        border: 1px solid #dadada;
+        border-radius: 4px;
+        font-size: 14px;
+        height: 108px;
+        margin: 27px auto 0;
+        padding: 5px 10px;
+        /*width: 898px;*/
+        word-break: break-all;
+        overflow: auto;
+        resize: none;
+    }
+
+    .chapter-comment-form input:focus, .comment-input-box .comment-input:focus {
+        border-color: #feb8b8;
+        box-shadow: 0 0 3px #fa7298;
+        outline: medium none;
+        transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+    }
+
+    .comment-input-box .comment-submit {
+        /*width: 20%;*/
+        height: 48px;
+        margin-top: 10px;
+        /*height: 4rem;*/
+        background: #fa7298;
+        border: none;
+        margin-left: 0.5rem;
+        font-size: 0.875rem;
+        color: #fff;
+        float: right;
+        padding: 14px;
+        border-radius: 3px;
+        display: inline-block;
+        text-align: center;
+    }
+
+    .comment-list {
+        font-size: 0.75rem;
+        /*line-height: 2rem;*/
+    }
+
+    .comment {
+        font-size: 12px;
+        margin: 1rem 0;
+        border-top: solid 1px #eee;
+    }
+
+    .comment::after {
+        clear: both;
+        display: table;
+        content: '';
+    }
+
+    .comment > .row:first-child {
+        border-top: solid 1px #eee;
+        padding: 10px 0;
+    }
+
+    .comment > .row:first-child > .c-right {
+        float: left;
+        width: 760px;
+        margin-left: 6px;
+    }
+
+    .comment .name {
+        font-size: 14px;
+    }
+
+    .comment .level {
+        line-height: 1rem;
+    }
+
+    .comment .comment-content {
+        margin-top: 16px;
+    }
+
+    .comment .state {
+        color: #999;
+        margin-top: 16px;
+    }
+
+    .comment .state a {
+        color: inherit;
+        margin-left: 32px;
+    }
+
+    .comment-input-row .avatar > img {
+        margin-top: 6px;
+    }
+
+    .sub-coment-list {
+        display: block;
+        padding-left: 60px;
+        /*border-bottom: solid 1px #eee;*/
+    }
+
+    .sub-coment-list .comment {
+        border: 0
+    }
+
+    .btn-expand {
+        width: 92%;
+        float: right;
+        height: 44px;
+        line-height: 44px;
+        margin-top: 20px;
+        border-radius: 10px
+    }
+
+    .text-muted {
+        color: #999;
+    }
+
+    .J_ReplyList .page, .J_CommentList .page {
+        padding-bottom: 20px;
+    }
+
+    .chapter_item a {
+        max-width: 40px;
+    }
+
+    .chapter_item .lock {
+        height: inherit;
+    }
+
+    .chapter_item .unlock {
+        height: inherit;
+    }
+
+    .avatar img.comment-avatar {
+        height: 30px;
+        width: 30px;
+    }
+
+    .reply-list {
+        background: #f0f0f0 none repeat scroll 0 0;
+        border: 1px solid #dcdcdc;
+        border-radius: 5px;
+        margin-left: 40px;
+        /*padding-left: 40px;*/
+    }
+
+    .reply-list p {
+        border-bottom: 1px solid #dcdcdc;
+        color: #000000;
+        padding-right: 70px;
+        position: relative;
+    }
+
+    .reply-list p, .reply-list div {
+        padding: 6px 13px;
+        font: 100 14px/24px 'microsoft yahei';
+        text-align: left;
+        margin: 0;
+    }
+
+    .reply-list .reply-list-page {
+        /*float: right;*/
+        /*padding: 0;*/
+        text-align: left;
+        height: 40px;
+    }
+
+    .reply-list-page .pageIn {
+        color: #5191d2;
+        padding: 0;
+    }
+
+    .reply-list-page .page a {
+        border-radius: 0;
+    !important;
+        height: 20px;
+    !important;
+        line-height: 20px;
+    !important;
+        width: 20px;
+    !important;
+        font-size: 12px;
+    !important;
+    }
+
+    .reply-list-page .page .prev a, .reply-list-page .page .next a {
+        border-radius: 0;
+    !important;
+        height: 20px;
+    !important;
+        line-height: 20px;
+    !important;
+        width: 40px;
+    !important;
+    }
+
+    .reply-list-page .page a::after {
+        content: none;
+    }
+</style>
+{/block}
+{block name="content"}
+<div class="row">
+    <div class="left">
+        <div class="row book-info2-box">
+            <img class="book-img lazyload" src="/static/upload/book/{$book.id}/cover.jpg" alt="{$book.book_name}">
+            <div class="book-info2">
+                <div class="book-title">
+                    <div class="tag tag-lianzai">{$book.end == 1 ? '完结' : '连载中'}</div>
+                    <div class="tag tag-qianyue">正版</div>
+                    <span>{$book.book_name}</span>
+                </div>
+                <div class="row book-info2-numbers">
+                    <span><i class="icon-point">●</i>点击：{$book.click}</span>
+                </div>
+                <div class="book-brief">
+                    {$book.summary}
+                </div>
+                <div style="border-bottom: dashed 1px #e5e5e5; height: 1.5rem; line-height:1.5rem; margin-bottom:0.375rem;">
+                    更新时间：{$book.update_time}
+                </div>
+                <div class="row">
+                    <span class="pull-left">分类：</span>
+                    {volist name="tags" id="vo"}
+                    <span class="tag">{$vo}</span>
+                    {/volist}
+                </div>
+                <div class="row">
+                    <button onclick="javascript:location.href='{:url("chapters/index",["id" => $start])}'" class="btn btn-primary">开始阅读</button>
+                </div>
+            </div>
+        </div>
+        <!--end of book info -->
+        <div id="chapter_list" class="box chapter-list">
+            <div class="chapter">
+                <div class="chapter-title">目录</div>
+                <div class="articles">
+                    {volist name="book.chapters" id="vo"}
+                    <span class="chapter_item">
+                        <a href="{:url('chapters/index',['id'=>$vo.id])}"
+                           target="_blank" style="color: #000000">{$vo.chapter_name}</a>
+                    </span>
+                    {/volist}
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="right">
+        <div class="box m-t-s">
+            <div class="user-info m-n">
+                <a class="avatar pull-left" target="_blank" href="#">
+                    <img src="https://wx2.sinaimg.cn/mw690/ab72f980gy1fy63bnjqxhj202s02sq2x.jpg" style="">
+                </a>
+                <div class="pull-left">
+                    <div class="username text-primary">{$book.author.author_name}</div>
+                    <!--                            <div class="smaller">个性签名~~~~~</div>-->
+                </div>
+            </div>
+            <div class="row m-t">
+                <a href="#" class="btn btn-default btn-large" style="width:45%">打赏</a>
+                <a href="#" class="btn btn-default btn-large" style="width:45%; margin-left:6%">催更</a>
+            </div>
+        </div>
+        <div class="block-right">
+            <div class="block-title">
+                <i class="icon-title icon-title-recommendation"></i>
+                <span>作者文集</span>
+            </div>
+            <ul class="rank-list J_BookList">
+                {volist name="book.author.books" id="vo" lenth="7"}
+                <li>
+                    <a href="{:url('books/index',['id'=>$vo.id])}" target="_blank" class="thumb">
+                        <img data-sizes="108px" alt="{$vo.book_name}" class="lazyload  cover" data-original="https://avatar.shubl.com/novel/img_index_recommend/carousel_new/20181019093139136.jpg"
+                             src="/static/upload/book/{$vo.id}/cover.jpg">
+                    </a>
+                    <div class="book-info">
+                        <a href="{:url('books/index',['id'=>$vo.id])}" target="_blank">{$vo.book_name}</a>
+                        <div class="summaries">
+                            {$vo.summary}
+                        </div>
+                    </div>
+                </li>
+                {/volist}
+            </ul>
+        </div>
+    </div>
+</div>
+{/block}

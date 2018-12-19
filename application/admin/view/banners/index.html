@@ -1,0 +1,47 @@
+{extend name="pub/base" /}
+{block name="content"}
+<div class="x-body">
+    <xblock>
+        <button class="layui-btn" onclick="x_admin_show('添加轮播','{:url("create")}')"><i class="layui-icon"></i>添加
+        </button>
+        <span class="x-right" style="line-height:40px">共有数据：{$count} 条</span>
+    </xblock>
+    <table class="layui-table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>标题</th>
+            <th>封面</th>
+            <th>所属漫画</th>
+            <th>操作</th>
+        </thead>
+        <tbody>
+        {volist name="banners" id="vo"}
+        <tr class="text-c">
+            <td>{$vo.id}</td>
+            <td>{$vo.title}</td>
+            <td>
+                <img width="33%" class="picture-thumb" src="/static/upload/banner/{$vo.pic_name}">
+            </td>
+            <td>
+                {$vo.book.book_name}
+            </td>
+            <td class="td-manage">
+                <a title="编辑"  onclick="x_admin_show('编辑','edit?id={$vo.id}')" href="javascript:;">
+                    <i class="layui-icon">&#xe642;</i>
+                </a>
+                <a title="删除" onclick="del('{:url("banners/delete",["id"=>$vo.id])}')" href="javascript:;">
+                    <i class="layui-icon">&#xe640;</i>
+                </a>
+            </td>
+        </tr>
+        {/volist}
+        </tbody>
+    </table>
+    <div class="page">
+        <div>
+            {$banners|raw}
+        </div>
+    </div>
+</div>
+{/block}

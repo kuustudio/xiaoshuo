@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>{$title|default="免费言情小说，耽美小说"}-{$site_name}</title>
+    <meta name="description" content="{$desc|default='言情小说吧提供最新最全免费的全本言情小说,耽美小说'}">
+    <link rel="shortcut icon" href="/static/images/ShuDan_Icon_32_R.png">
+    <link rel="stylesheet" type="text/css" href="/static/css/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/ui.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/dropdown.css">
+    {block name="css"}{/block}
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/static/js/jquery-ui.min.js"></script>
+    <script src="/static/js/dropdown.js"></script>
+</head>
+<body class="index-bg">
+
+<div id="header">
+    <div class="container">
+        <a href="/" id="logo"></a>
+        <div class="right pull-right">
+            <a target="_blank" href="{:url('index/bookshelf')}" >书架</a>
+            <a target="_blank" href="#">登录</a>
+            <a target="_blank" href="#">注册</a>
+        </div>
+        <span style="display:block; position:absolute; top:60px; font-size:18px; font-weight:bold; font-family: &#39;Microsoft Yahei&#39;;">
+        女生最喜欢的言情小说阅读网~
+      </span>
+    </div>
+</div>
+
+
+<div id="dialog-tip" class="dialog_box">
+    <div class="dialog-tip-text"></div>
+    <a class="close-btn"> X </a>
+</div>
+
+<div id="main_content" style="margin-top:160px;">
+    <div class="container white-bg">
+        <nav id="nav_header" class="nav-header">
+            <a id="recommend" href="/">推荐</a>
+            <a id="tags" href="{:url('tags/index')}">书库</a>
+            <a id="rank" href="{:url('rank/index')}">排行</a>
+            <div class="pull-right">
+                <div id="search_wrap">
+                    <form class="search-form" action="{:url('index/search')}" method="get" target="_blank">
+                        <input name="keyword" placeholder="搜索更多作品">
+                        <button type="submit" id="search"></button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+        <script>
+            var href = document.location.href;
+            if (href.indexOf('tags') > -1){
+                $('#tags').addClass('active');
+            } else if (href.indexOf('rank') > -1){
+                $('#rank').addClass('active');
+            } else {
+                $('#recommend').addClass('active');
+            }
+        </script>
+        {block name="content"}{/block}
+
+    </div>
+</div>
+
+<a id="phone_code" href="http://app.shubl.com/" target="_blank"></a>
+<a id="J_GoTop" href="javascript:;" style="display: none;"></a>
+
+<script src="/static/js/carousel.js"></script>
+<script>
+    $(function () {
+        $("#slide_index").carousel({
+            // interval: 5000,
+        });
+    });
+</script>
+<div id="footer" class="">
+    <div class="container">
+        <div id="footer_links_row">
+            <div class="pull-left m-r-l">
+                <div style="font-size: 44px;">书耽</div>
+                <div style="font-size:26px;">纯爱乌托邦！</div>
+            </div>
+            <div class="pull-left m-r-l">
+                <!--                <a target="_blank" class="link text-primary text-underline">关于我们</a>-->
+                <!--                <a target="_blank" class="link">联系我们</a>-->
+            </div>
+            <div class="pull-left">
+                <a target="_blank" href="http://app.shubl.com/setting/get_author_bonus"
+                   class="text-primary link text-underline">作者福利</a>
+                <a target="_blank" href="http://app.shubl.com/setting/event/privacypolicy" class="link">免责声明</a>
+                <a target="_blank" href="http://app.shubl.com/setting/view_about_sign" class="link">签约制度</a>
+            </div>
+            <div class="pull-left" style="margin-left: 30px">
+                <a target="_blank" href="http://app.shubl.com/setting/event/editor_net"
+                   class="text-primary link text-underline">网编福利</a>
+            </div>
+            <div class="pull-right m-r-l">
+                <!--                <a id="footer-icon-webchart"></a>-->
+                <a id="footer-icon-qq"></a>
+                <a id="footer-icon-phone"></a>
+                <div id="contact">
+                    <span>公众号：女生言情小说</span><br>
+                    <span>QQ群：11111111</span>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div id="copyright">
+            <p>Copyright 2019 杰奇cms小说连载系统</p>
+            <p>请所有作者发布作品时务必遵守国家互联网信息管理办法规定，我们拒绝任何内容违法的小说，一经发现，即作删除！举报电话：0571—88667962</p>
+            <p>本站所收录作品、社区话题、书库评论及用户上传内容或图片等均属用户个人行为，与本站立场无关</p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

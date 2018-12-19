@@ -1,0 +1,40 @@
+{extend name="pub/mbase" /}
+{block name="css"}
+<style>
+    .container {
+        padding-top: 0.26625rem;
+        column-count: 3;
+        column-gap: 0.3195rem;
+        -webkit-column-count: 3;
+        -webkit-column-gap: 0.3195rem;
+        -moz-column-count: 3;
+        -moz-column-gap: 0.3195rem;
+    }
+    .container .item {
+        display: block;
+        text-align: center;
+        vertical-align: middle;
+        min-height: 2.6625rem;
+        margin-bottom: 0.26625rem;
+        border-radius: 0.15975rem;
+        font-size: 0.47925rem;
+        font-family: 'Microsoft YaHei';
+        font-weight: bolder;
+    }
+</style>
+{/block}
+{block name="content"}
+<div class="bg-gray before-banner-footer" style="padding-top:0.3195rem">
+    <div class="container">
+        <a class="item" style="background:#ceeecd" href="http://m.shubl.com/index/rank_book/favor">收藏榜</a>
+        <a class="item" style="background:#bfe0f3" href="http://m.shubl.com/index/rank_book/fans_value">畅销榜</a>
+        <a class="item" style="background:#f5b0a7" href="http://m.shubl.com/index/rank_book/recommend">推荐榜</a>
+        <a class="item" style="background:#adabd0" href="http://m.shubl.com/index/rank_book/click">点击榜</a>
+        <a class="item" style="background:#fee9a3" href="http://m.shubl.com/index/rank_book/word_count">更新榜</a>
+        <a class="item" style="background:#89aca6" href="http://m.shubl.com/index/rank_book/yp_new">新书榜</a>
+        <a class="item" style="background:#fed3bb" href="http://m.shubl.com/index/rank_book/blade">催更榜</a>
+        <a class="item" style="background:#e2daed" href="http://m.shubl.com/index/rank_book/yp">月票榜</a>
+        <a class="item" style="background:#deefe5" href="http://m.shubl.com/index/rank_book/tongren">同人榜</a>
+    </div>
+</div>
+{/block}

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en" data-dpr="1" style="font-size: 36px;">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>{$title|default="免费言情小说，耽美小说-言情小说网"}</title>
+    <meta name="description" content="书耽提供最新最全好看的全本耽美小说，同人小说，bl小说">
+    <link rel="shortcut icon" href="/static/images/ShuDan_Icon_32_R.png">
+    <link rel="stylesheet" type="text/css" href="/static/css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/mstyle.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/grid.css">
+
+    <script src="/static/js/jquery-3.2.1.min.js"></script>
+    <script src="/static/js/flexible.js"></script>
+    <script src="/static/js/jquery.uiAlertView-1.0.0.js"></script>
+    <script src="/static/js/base.js"></script>
+
+</head>
+<body style="font-size: 12px;">
+<div id="global_search_body">
+    <form id="search_header" method="get" target="_self" action="{:url('index/search')}">
+        <div class="left" style="width: 80%">
+            <div class="search-wrap center">
+                <input class="input" type="text" name="keyword" id="search_book_input" value="" placeholder="输入你感兴趣的作者作品">
+                <a class="search"><i class="iconfont icon-sousuo"></i></a>
+            </div>
+        </div>
+        <div class="right" style="top:0.37274999999999997rem;">
+            <a id="search_close_btn">取消</a>
+        </div>
+    </form>
+</div>
+{include file="pub/m_menu" /}
+<!--container start-->
+<style>
+    /* ads */
+    .banner {
+        position: relative;
+        overflow: hidden;
+        height: 5.4375rem;
+    }
+    .banner-wrap {
+        position: relative;
+        overflow: hidden;
+        height: 5.4375rem;
+    }
+    .banner-wrap > div {
+        display: inline-block;
+        position: relative;
+        float: left;
+        width: 100%;
+        height: 5.4375rem;
+    }
+    .banner-wrap > div img {
+        width: 100%;
+        height: 5.4375rem;
+    }
+
+    .banner-page {
+        display: block;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+    }
+    .banner-page li {
+        display: inline-block;
+        width: 0.15625rem;
+        height: 0.15625rem;
+        border-radius: 0.78125rem;
+        background-color: #f1ecce;
+        margin: 0 0.01rem;
+    }
+    .banner-page li.on {
+        width: 0.312rem;
+        background-color: #fa7298;
+    }
+
+    /*index menu */
+    #index_menu {
+        margin: 0.3195rem 0;
+        height: 1.943625rem;
+        background: #fff;
+    }
+    #index_menu li {
+        padding: 0.3195rem 0;
+        line-height: 1;
+        font-size: 0.3195rem;
+        text-align: center;
+    }
+    #index_menu li a {
+        width: 0.852rem;
+        height: 0.852rem;
+        margin-bottom: 0.15975rem;
+        display: inline-block;
+    }
+    #main .container + .container {
+        margin-top: 0.3195rem;
+    }
+
+</style>
+<div class="bg-white" style="padding-top:0.26625rem">
+    <div id="index_header">
+        <img class="logo" src="/static/images/logo.png">
+        <!--<a href="#" class="user-center"><i class="iconfont icon-user-center"></i></a>-->
+        <a href="{:url('index/bookshelf')}" class="bookshelf"><i class="iconfont icon-wodeshujia"></i></a>
+    </div>
+
+    <form id="global_search" class="center" method="get" target="_self" action="{:url('index/search')}">
+        <input type="text" name="key" value="" class="input input-primary" placeholder="标题、作者、关键字">
+        <a class="search" onclick="document.getElementById(&#39;global_search&#39;).submit()"><i class="iconfont icon-sousuo"></i></a>
+    </form>
+
+</div>
+
+<div id="main" class="bg-gray">
+
+    <div id="slide_ads" class="banner" style="visibility: visible;">
+        <div class="banner-wrap" style="width: 1800px;">
+            {volist name="banners" id="vo"}
+            <div data-index="0" style="width: 360px; left: 0px; transition-duration: 0ms; transform: translate(0px, 0px) translateZ(0px);">
+                <a href="{:url('books/index',['id'=>$vo.book_id])}">
+                    <img src="/static/upload/banner/{$vo.pic_name}" alt="{$vo.title}" class="lazyload cover" style="">
+                </a>
+            </div>
+            {/volist}
+        </div>
+        <ul class="banner-page" id="position">
+            <li class="on"></li>
+            <li class=""></li>
+            <li class=""></li>
+            <li class=""></li>
+            <li class=""></li>
+        </ul>
+    </div>
+
+
+    <ul id="index_menu" class="row">
+        <li class="col-xs-3">
+            <a class="menu-icon-fenlei" href="{:url('tags/taglist')}">
+                <i class="iconfont icon-fenlei"></i>
+            </a>
+            <p>分类</p>
+        </li>
+        <li class="col-xs-3">
+            <a class="menu-icon-paihang" href="{:url('rank/index')}">
+                <i class="iconfont icon-paihang"></i>
+            </a>
+            <p>排行</p>
+        </li>
+        <li class="col-xs-3">
+            <a class="menu-icon-wanben" href="/index/tags/index?order=last_time&end=1">
+                <i class="iconfont icon-wanben"></i>
+            </a>
+            <p>完本</p>
+        </li>
+        <li class="col-xs-3">
+            <a class="menu-icon-vip" href="#">
+                <i class="iconfont icon-vip-zhuanqu"></i>
+            </a>
+            <p>VIP专区</p>
+        </li>
+    </ul>
+    <!-- 主编推荐榜 -->
+    <div class="container">
+        <div class="block-title">
+            <span>最多点击</span>
+        </div>
+        <ul class="book-list book-list-large row">
+            {volist name="hot" id="vo"}
+            <li class="col-xs-4 col-lg-3">
+                <a href="{:url('books/index',['id'=>$vo.id])}">
+                        <span class="thumb">
+                            <img data-original="/static/upload/book/{$vo.id}/cover.jpg"
+                                 src="https://s1.ax1x.com/2018/12/13/FN8WLQ.jpg" alt="{$vo.book_name}" class="lazyload cover" style="">
+                        </span>
+                    <span class="title">{$vo.book_name}</span>
+                </a>
+            </li>
+            {/volist}
+        </ul>
+    </div>
+    <!-- 热销榜 -->
+    <div class="container">
+        <div class="block-title">
+            <span>优质新书</span>
+        </div>
+        <ul class="book-list book-list-vetical">
+            {volist name="newest" id="vo"}
+            <li>
+                <a href="{:url('books/index',['id'=>$vo.id])}">
+                        <span class="thumb">
+                           <img data-original="/static/upload/book/{$vo.id}/cover.jpg"
+                                src="https://s1.ax1x.com/2018/12/13/FN8WLQ.jpg" alt="{$vo.book_name}" class="lazyload cover" style="">
+                        </span>
+                    <div class="info">
+                        <span class="title">{$vo.book_name}</span>
+                        <div class="author">{$vo.author.author_name}</div>
+                        <div class="summaries">
+                            {$vo.summary|subtext=60}
+                        </div>
+                    </div>
+                </a>
+            </li>
+            {/volist}
+        </ul>
+    </div>
+    <!-- 精选佳作 -->
+    <div class="container before-banner-footer">
+        <div class="block-title">
+            <span>精选佳作</span>
+        </div>
+        <ul class="book-list row">
+            {volist name="right_top" id="vo"}
+            <li class="col-xs-3 col-lg-2">
+                <a href="{:url('books/index',['id'=>$vo.id])}">
+                        <span class="thumb">
+                            <img data-original="/static/upload/book/{$vo.id}/cover.jpg"
+                                 src="https://s1.ax1x.com/2018/12/13/FN8WLQ.jpg" alt="{$vo.book_name}" class="lazyload cover" style="">
+                        </span>
+                    <span class="title">{$vo.book_name}</span>
+                </a>
+            </li>
+            {/volist}
+            {volist name="right_bottom" id="vo"}
+            <li class="col-xs-3 col-lg-2">
+                <a href="{:url('books/index',['id'=>$vo.id])}">
+                        <span class="thumb">
+                            <img data-original="/static/upload/book/{$vo.id}/cover.jpg"
+                                 src="https://s1.ax1x.com/2018/12/13/FN8WLQ.jpg" alt="{$vo.book_name}" class="lazyload cover" style="">
+                        </span>
+                    <span class="title">{$vo.book_name}</span>
+                </a>
+            </li>
+            {/volist}
+        </ul>
+    </div>
+</div>
+{include file="pub/lazyload" /}
+<script src="/static/js/swipe.js"></script>
+<script>
+    var bullets = document.getElementById('position').getElementsByTagName('li');
+    window.mySwipe = new Swipe(document.getElementById('slide_ads'), {
+        startSlide: 0,
+        speed: 400,
+//            auto: 3000,
+        continuous: true,
+        disableScroll: false,
+        stopPropagation: false,
+        callback: function(index, elem) {
+            var i = bullets.length;
+            while(i--){
+                bullets[i].className = ' ';
+            }
+            bullets[index].className = 'on';
+        },
+        transitionEnd: function(index, elem) {}
+    });
+</script>
+</body>
+</html>

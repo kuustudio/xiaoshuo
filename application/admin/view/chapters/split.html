@@ -1,0 +1,21 @@
+{extend name="pub/base" /}
+{block name="content"}
+<div class="x-body">
+    <form class="layui-form" action="{:url('split')}" method="post" enctype="multipart/form-data">
+        <input type="hidden" value="{$book_id}" name="book_id">
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">
+                文件
+            </label>
+            <div class="layui-input-inline">
+                <input type="file" name="content" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label"></label>
+            <input type="submit" class="layui-btn" value="增加">
+        </div>
+    </form>
+</div>
+{/block}

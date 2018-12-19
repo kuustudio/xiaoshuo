@@ -1,0 +1,102 @@
+{extend name="pub/mbase" /}
+{block name="css"}
+<style>
+    #filter_body {
+        display: none;
+        position: absolute;
+        top: 2.6625rem;
+        left: 0;
+        width: 100%;
+    }
+
+    #filter_table {
+        width: 100%;
+        table-layout: fixed;
+        border-collapse: separate;
+        border-spacing: 0;
+        border: solid 1px #e6e6e6;
+        border-radius: 0.18637499999999999rem;
+    }
+
+    #filter_table tr:not(:last-child) td {
+        border-bottom: solid 1px #e6e6e6;
+    }
+
+    #filter_table tr:first-child td:first-child {
+        border-radius: 0.18637499999999999rem 0 0 0;
+    }
+
+    #filter_table .title {
+        width: 20%;
+        text-align: center;
+        vertical-align: middle;
+        font-size: 0.399375rem;
+        color: #666;
+        background: #f4f2f2;
+    }
+
+    #filter_table .selection {
+        padding: 0.5325rem 0.26625rem 0.26625rem 0.26625rem;
+    }
+
+    #filter_table .selection button {
+        display: inline-block;
+        height: 0.505875rem;
+        line-height: 0.47925rem;
+        border-radius: 0.2529375rem;;
+        padding: 0 0.3195rem;
+        color: black;
+        font-size: 0.3195rem;
+        margin-right: 0.26625rem;
+        margin-bottom: 0.26625rem;
+    }
+
+    #filter_table .selection button.active {
+        background: #fa7298;
+        color: #fff;
+        border: none;
+    }
+
+    #filter_table .selection input[type="radio"] {
+        display: none;
+    }
+
+    #submit_btn {
+        display: block;
+        width: 100%;
+        height: 1.01175rem;
+        line-height: 1.01175rem;
+        text-align: center;
+    }
+
+    #J_BookList {
+        min-height: 15rem;
+    }
+</style>
+{/block}
+{block name="content"}
+<div id="sub_category_body" class="bg-gray before-banner-footer" style="padding-top:0.3195rem;">
+    <div id="J_BookList" class="container">
+        <ul class="book-list book-list-vetical">
+            {volist name="books" id="vo"}
+            <li>
+                <a href="{:url('books/index',['id'=>$vo.id])}">
+                    <span class="thumb">
+                         <img data-original="/static/upload/book/{$vo.id}/cover.jpg"
+                              src="https://s1.ax1x.com/2018/12/13/FN8WLQ.jpg" alt="{$vo.book_name}" class="lazyload cover" style="">
+                    </span>
+                    <div class="info"><span class="title">{$vo.book_name}</span>
+                        <div class="author">{$vo.author.author_name}</div>
+                        <div class="summaries">
+                            {$vo.summary}
+                        </div>
+                    </div>
+                </a>
+            </li>
+            {/volist}
+        </ul>
+    </div>
+</div>
+
+{include file="pub/lazyload" /}
+{/block}

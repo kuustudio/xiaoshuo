@@ -1,0 +1,169 @@
+{extend name="pub/base" /}
+{block name="content"}
+<div id="books_section_a" class="books-section">
+    <div id="slide_index" class="recommend-a carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#slide_index" data-slide-to="0" class=""></li>
+            <li data-target="#slide_index" data-slide-to="1" class="active"></li>
+        </ol>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            {volist name="banners" id="vo"}
+            <div class="item">
+                <a target="_blank" href="{:url('books/index',['id'=>$vo.book_id])}">
+                    <img src="/static/upload/banner/{$vo.pic_name}" alt="{$vo.title}" style="">
+                    <div class="carousel-caption">
+                    </div>
+                </a>
+            </div>
+            {/volist}
+        </div>
+    </div>
+    <div class="recommend-b">
+        <!--轮播右侧-->
+        <ul class="hot-recommend J_BookList">
+            {volist name="right_lunbo" id="vo"}
+            <li>
+                <a href="{:url('books/index',['id'=>$vo.id])}" target="_blank" class="thumb">
+                    <img data-sizes="108px" alt="{$vo.book_name}！" class="lazyload  cover" data-original="/static/upload/book/{$vo.id}/cover.jpg"
+                         src="https://wx1.sinaimg.cn/mw690/ab72f980gy1fy63bnky60j203m050dft.jpg">
+                    <h3 class="mask-recommend hot-title">{$vo.book_name}</h3>
+                    <div class="desc">
+                        <p>{$vo.book_name}</p>
+                        <p>{$vo.author.author_name}</p>
+                        <p class="m-t">人气：{$vo.click}</p>
+                        <p>收藏：0</p>
+                    </div>
+                </a>
+            </li>
+            {/volist}
+        </ul>
+    </div>
+    <div class="recommend-c">
+
+        <a href="http://app.shubl.com/setting/get_author_bonus" target="_blank" class="block-link">
+            <div class="icon c"></div>
+            <div class="title">作家福利</div>
+        </a>
+        <a href="http://app.shubl.com/setting/zhengwen/danmeizhiyue" target="_blank" class="block-link">
+            <div class="icon d"></div>
+            <div class="title">征文大赛</div>
+        </a>
+        <a href="javascript:;" class="block-link">
+            <div class="icon a"></div>
+            <div class="title">交流区</div>
+        </a>
+        <a href="javascript:;" class="block-link">
+            <div class="icon b"></div>
+            <div class="title">微耽区</div>
+        </a>
+    </div>
+</div>
+<div id="books_section_b" class="books-section">
+    <!--首页-火热连载-->
+    <div class="block-left">
+        <div class="block-title">
+            <i class="icon-title icon-title-updating"></i>
+            <span>最多点击</span>
+            <!--                    <a href="" class="more">更多 &gt;</a>-->
+        </div>
+        <ul class="book-list J_BookList">
+            {volist name="hot" id="vo"}
+            <li>
+                <a href="{:url('books/index',['id'=>$vo.id])}" target="_blank" class="thumb">
+                    <img data-sizes="108px" alt="{$vo.book_name}！" class="lazyload  cover" data-original="/static/upload/book/{$vo.id}/cover.jpg"
+                         src="https://wx1.sinaimg.cn/mw690/ab72f980gy1fy63bnky60j203m050dft.jpg">
+                    <div class="book-overlay-info">
+                        <div class="avatar">
+                            <img class="lazyload" src="https://wx2.sinaimg.cn/mw690/ab72f980gy1fy63bnjqxhj202s02sq2x.jpg">
+                            {$vo.author.author_name}
+                        </div>
+                        <p class="m-t">人气：{$vo.click}</p>
+                        <p>收藏：0</p>
+                    </div>
+                </a>
+                <a href="{:url('books/index',['id'=>$vo.id])}" target="_blank" class="title title-l2">{$vo.book_name}</a>
+            </li>
+            {/volist}
+        </ul>
+    </div>
+    <!--首页-主编推荐-->
+    <div class="block-right">
+        <div class="block-title">
+            <i class="icon-title icon-title-recommendation"></i>
+            <span>主编推荐</span>
+        </div>
+        <ul class="rank-list J_BookList">
+            {volist name="right_top" id="vo"}
+            <li>
+                <a href="{:url('books/index',['id'=>$vo.id])}" target="_blank" class="thumb">
+                    <img data-sizes="108px" alt="{$vo.book_name}！" class="lazyload  cover" data-original="/static/upload/book/{$vo.id}/cover.jpg"
+                         src="https://wx1.sinaimg.cn/mw690/ab72f980gy1fy63bnky60j203m050dft.jpg">
+                </a>
+                <div class="book-info">
+                    <a href="{:url('books/index',['id'=>$vo.id])}" target="_blank" class="title title-l2">{$vo.book_name}</a>
+                    <div class="summaries">
+                        {$vo.summary}
+                    </div>
+                </div>
+            </li>
+            {/volist}
+        </ul>
+    </div>
+</div>
+<div id="books_section_c" class="books-section">
+    <!--首页-优质新书-->
+    <div class="block-left">
+        <div class="block-title">
+            <i class="icon-title icon-title-quality"></i>
+            <span>优质新书</span>
+            <!--                    <a href="" class="more">更多 &gt;</a>-->
+        </div>
+        <ul class="book-list J_BookList">
+            {volist name="newest" id="vo"}
+            <li>
+                <a href="{:url('books/index',['id'=>$vo.id])}" target="_blank" class="thumb">
+                    <img data-sizes="108px" alt="{$vo.book_name}！" class="lazyload  cover"
+                         data-original="/static/upload/book/{$vo.id}/cover.jpg"
+                         src="https://wx1.sinaimg.cn/mw690/ab72f980gy1fy63bnky60j203m050dft.jpg">
+                    <div class="book-overlay-info">
+                        <div class="avatar">
+                            <img class="lazyload" src="https://wx2.sinaimg.cn/mw690/ab72f980gy1fy63bnjqxhj202s02sq2x.jpg">
+                            {$vo.author.author_name}
+                        </div>
+                        <p class="m-t">人气：{$vo.click}</p>
+                        <p>收藏：0</p>
+                    </div>
+                </a>
+                <a href="{:url('books/index',['id'=>$vo.id])}" target="_blank" class="title title-l2">{$vo.book_name}</a>
+            </li>
+            {/volist}
+        </ul>
+    </div>
+    <!--首页-同人推荐-->
+    <div class="block-right">
+        <div class="block-title">
+            <i class="icon-title icon-title-tongren"></i>
+            <span>读者最爱</span>
+        </div>
+        <ul class="rank-list J_BookList">
+            {volist name="right_bottom" id="vo"}
+            <li>
+                <a href="{:url('books/index',['id'=>$vo.id])}" target="_blank" class="thumb">
+                    <img data-sizes="108px" alt="{$vo.book_name}！" class="lazyload  cover" data-original="/static/upload/book/{$vo.id}/cover.jpg"
+                         src="https://wx1.sinaimg.cn/mw690/ab72f980gy1fy63bnky60j203m050dft.jpg">
+                </a>
+                <div class="book-info">
+                    <a href="{:url('books/index',['id'=>$vo.id])}" target="_blank" class="title title-l2">{$vo.book_name}</a>
+                    <div class="summaries">
+                        {$vo.summary}
+                    </div>
+                </div>
+            </li>
+            {/volist}
+        </ul>
+    </div>
+</div>
+{include file="pub/lazyload" /}
+{/block}

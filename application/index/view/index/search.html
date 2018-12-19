@@ -1,0 +1,118 @@
+{extend name="pub/base" /}
+{block name="content"}
+<style>
+    .container {
+        padding: 0 20px;
+    }
+    #book_search_form {
+        display: block;
+        padding-bottom: 30px;
+        border-bottom: solid 1px #dddddd;
+    }
+    #search_book_input {
+        background: transparent;
+        border: solid 1px #bfbfbf;
+        border-radius: 3px;
+        height: 40px;
+        line-height: 40px;
+        font-size: 14px;
+        padding: 0 14px;
+        width: 560px;
+    }
+    .book-list li {
+        position: relative;
+        width: 100%;
+        height: 177px;
+        margin: 0 10px 25px;
+        font-size: 16px;
+        border-bottom: solid 1px #dddddd;
+    }
+    .book-list li .num {
+        width: 40px;
+        height: 158px;
+        line-height: 158px;
+        text-align: center;
+    }
+    .book-list .thumb {
+        float: left;
+        width: 118px;
+        height: 158px;
+        margin-right: 12px;
+    }
+    .book-list .book-info {
+        height: 100%;
+        margin-right: 140px;
+    }
+    .book-info .summaries {
+        margin-top: 30px;
+        /*height: 40%;*/
+        /*overflow: hidden;*/
+        /*white-space:nowrap;*/
+        /*text-overflow:ellipsis;*/
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        overflow: hidden;
+    }
+    .book-list .buttons {
+        width: 100px;
+        position: absolute;
+        right: 10px;
+        top:20px;
+    }
+    .book-list .btn {
+        width: 100%;
+        padding: 15px;
+        display: inline-block;
+        line-height: inherit;
+        height: inherit;
+    }
+    .book-list .btn + .btn {
+        margin-top: 20px;
+    }
+</style>
+<div style="padding: 20px 0;font-size:12px;">首页 <span style="padding: 0 0.5rem;"> &gt; </span>搜索 </div>
+
+<form id="book_search_form" action="{:url('index/search')}" method="get" target="_self">
+    <div class="text-center">
+        <input type="text" name="keyword" id="search_book_input" placeholder="输入作品名称">
+        <button style="display: none" type="submit" id="button_search"></button>
+    </div>
+    <div class="smaller">
+        有<span class="text-primary">{$count}</span>条符合关键词的搜索结果
+    </div>
+</form>
+
+<div class="books-section">
+    <ul class="book-list">
+        {volist name="books" id="vo"}
+        <li>
+            <a href="{:url('books/index',['id'=>$vo.id])}" target="_blank" class="thumb">
+                <img data-sizes="108px" alt="{$vo.book_name}" class="lazyload  cover" src="/static/upload/book/{$vo.id}/cover.jpg">
+                <div class="book-overlay-info">
+                    <div class="avatar">
+                        <img src="https://wx2.sinaimg.cn/mw690/ab72f980gy1fy63bnjqxhj202s02sq2x.jpg">
+                        {$vo.author.author_name}
+                    </div>
+                    <p class="m-t">人气：{$vo.click}</p>
+                </div>
+            </a>
+            <div class="book-info">
+                <a class="text-default book-name" target="_blank" href="{:url('books/index',['id'=>$vo.id])}">{$vo.book_name}</a>
+                <div class="smaller text-muted">
+                    作者：{$vo.author.author_name}<br>
+                    最近更新：{$vo.update_time} / {$vo.last_chapter}
+                </div>
+                <div class="summaries">
+                    {$vo.summary}
+                </div>
+            </div>
+            <div class="buttons">
+                <a class="btn btn-primary btn-large" href="http://www.shubl.com/book/book_detail/100141995" target="_blank">开始阅读</a>
+                <a class="btn btn-default btn-large J_Favor"><span class="icon-star"></span><span class="J_FavorText">收藏</span></a>
+            </div>
+        </li>
+        {/volist}
+    </ul>
+</div>
+{/block}

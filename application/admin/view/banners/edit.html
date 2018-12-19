@@ -1,0 +1,35 @@
+{extend name="pub/base" /}
+{block name="content"}
+<div class="x-body">
+    <form class="layui-form" action="{:url('update')}" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="{$banner.id}">
+        <div class="layui-form-item">
+            <label class="layui-form-label">
+                <span class="x-red">*</span>标题
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" value="{$banner.title}" name="title" required="" lay-verify="required" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">
+                <span class="x-red">*</span>漫画id
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" value="{$banner.book_id}" name="book_id" required="" lay-verify="required" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">封面</label>
+            <div class="layui-input-inline">
+                <input type="file" name="pic_name" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label"></label>
+            <input type="submit" class="layui-btn" value="保存">
+        </div>
+    </form>
+</div>
+{/block}

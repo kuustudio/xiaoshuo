@@ -1,0 +1,110 @@
+{extend name="pub/mbase" /}
+{block name="css"}
+<style>
+    #filter_body {
+        display: none;
+        position: absolute;
+        top: 2.6625rem;
+        left: 0;
+        width: 100%;
+    }
+
+    #filter_table {
+        width: 100%;
+        table-layout: fixed;
+        border-collapse: separate;
+        border-spacing: 0;
+        border: solid 1px #e6e6e6;
+        border-radius: 0.18637499999999999rem;
+    }
+
+    #filter_table tr:not(:last-child) td {
+        border-bottom: solid 1px #e6e6e6;
+    }
+
+    #filter_table tr:first-child td:first-child {
+        border-radius: 0.18637499999999999rem 0 0 0;
+    }
+
+    #filter_table .title {
+        width: 20%;
+        text-align: center;
+        vertical-align: middle;
+        font-size: 0.399375rem;
+        color: #666;
+        background: #f4f2f2;
+    }
+
+    #filter_table .selection {
+        padding: 0.5325rem 0.26625rem 0.26625rem 0.26625rem;
+    }
+
+    #filter_table .selection button {
+        display: inline-block;
+        height: 0.505875rem;
+        line-height: 0.47925rem;
+        border-radius: 0.2529375rem;;
+        padding: 0 0.3195rem;
+        color: black;
+        font-size: 0.3195rem;
+        margin-right: 0.26625rem;
+        margin-bottom: 0.26625rem;
+    }
+
+    #filter_table .selection button.active {
+        background: #fa7298;
+        color: #fff;
+        border: none;
+    }
+
+    #filter_table .selection input[type="radio"] {
+        display: none;
+    }
+
+    #submit_btn {
+        display: block;
+        width: 100%;
+        height: 1.01175rem;
+        line-height: 1.01175rem;
+        text-align: center;
+    }
+
+    #J_BookList {
+        min-height: 15rem;
+    }
+</style>
+{/block}
+{block name="content"}
+<div id="sub_category_body" class="bg-gray before-banner-footer" style="padding-top:0.3195rem;">
+    <div id="J_BookList" class="container">
+        <ul class="book-list book-list-vetical">
+
+        </ul>
+    </div>
+</div>
+<script>
+    var keys = [];
+    for (i = 0; i < window.localStorage.length; i++){
+        var key = localStorage.key(i);
+        if(key.indexOf('novel_id') > -1){
+            keys.push(key);
+        }
+    }
+    if (keys.length > 10){
+        window.localStorage.removeItem(keys[0]);
+    }
+    for (i = 0; i < window.localStorage.length; i++){
+        var key = localStorage.key(i);
+        if(key.indexOf('novel_id') > -1){
+            var arr = JSON.parse(window.localStorage.getItem(key));
+            var $li = '<li><a href="/index/chapters/index/id/'+arr[2]+'.html">' +
+                '<span class="thumb"><img src="/static/upload/book/'+arr[0]+'/cover.jpg"></span>' +
+                '<div class="info"><span class="title">'+arr[1]+'</span>' +
+                '<div class="author">'+arr[4]+'|最后阅读：'+arr[3]+'</div>' +
+                '<div class="summaries">'+arr[5]+'</div></div></a></li>';
+            $("ul.book-list").append($li);
+        }
+    }
+</script>
+{include file="pub/lazyload" /}
+{/block}

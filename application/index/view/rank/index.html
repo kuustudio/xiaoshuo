@@ -1,0 +1,346 @@
+{extend name="pub/base" /}
+{block name="content"}
+<div class="section-rank">
+    <div class="block-wrap">
+        <div class="block js-block-rank">
+            <div class="block-title">点击榜</div>
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a href="#">周榜</a>
+                </li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active">
+                    <ul class="rank-list small">
+                        {volist name="most_click_week" id="vo"}
+                        {if $i <= 3}
+                        <li>
+                            <a href="{:url('books/index',['id'=>$vo.id])}" target="_blank" class="thumb">
+                                <img alt="{$vo.book_name}！" class="lazyload  cover" data-original="https://avatar.shubl.com/novel/img_index_recommend/carousel_new/20181019093139136.jpg"
+                                     src="/static/upload/book/{$vo.id}/cover.jpg">
+                            </a>
+                            <div class="book-info">
+                                <a href="{:url('books/index',['id'=>$vo.id])}" target="_blank" class="title title-l2">{$vo.book_name}</a>
+                                <div class="author">作者：{$vo.author.author_name}</div>
+                                <div class="summaries">点击：{$vo.click}</div>
+                            </div>
+                        </li>
+                        {else}
+                        <li>
+                            <span class="num">{$i}</span>
+                            <a href="{:url('books/index',['id'=>$vo.id])}" target="_blank" class="title">{$vo.book_name}</a>
+                            <div class="pull-right">{$vo.click}点击</div>
+                        </li>
+                        {/if}
+                        {/volist}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="block js-block-rank">
+            <div class="block-title">点击榜</div>
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a href="#" >月榜</a>
+                </li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active">
+                    <ul class="rank-list small">
+                        {volist name="most_click_month" id="vo"}
+                        {if $i <= 3}
+                        <li>
+                            <a href="{:url('books/index',['id'=>$vo.id])}" target="_blank" class="thumb">
+                                <img alt="{$vo.book_name}！" class="lazyload  cover" data-original="https://avatar.shubl.com/novel/img_index_recommend/carousel_new/20181019093139136.jpg"
+                                     src="/static/upload/book/{$vo.id}/cover.jpg">
+                            </a>
+                            <div class="book-info">
+                                <a href="{:url('books/index',['id'=>$vo.id])}" target="_blank" class="title title-l2">{$vo.book_name}</a>
+                                <div class="author">作者：{$vo.author.author_name}</div>
+                                <div class="summaries">点击：{$vo.click}</div>
+                            </div>
+                        </li>
+                        {else}
+                        <li>
+                            <span class="num">{$i}</span>
+                            <a href="{:url('books/index',['id'=>$vo.id])}" target="_blank" class="title">{$vo.book_name}</a>
+                            <div class="pull-right">{$vo.click}点击</div>
+                        </li>
+                        {/if}
+                        {/volist}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="block js-block-rank">
+            <div class="block-title">点击榜</div>
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a href="#" >总榜</a>
+                </li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active">
+                    <ul class="rank-list small">
+                        {volist name="most_click" id="vo"}
+                        {if $i <= 3}
+                        <li>
+                            <a href="{:url('books/index',['id'=>$vo.id])}" target="_blank" class="thumb">
+                                <img alt="{$vo.book_name}！" class="lazyload  cover" data-original="https://avatar.shubl.com/novel/img_index_recommend/carousel_new/20181019093139136.jpg"
+                                     src="/static/upload/book/{$vo.id}/cover.jpg">
+                            </a>
+                            <div class="book-info">
+                                <a href="{:url('books/index',['id'=>$vo.id])}" target="_blank" class="title title-l2">{$vo.book_name}</a>
+                                <div class="author">作者：{$vo.author.author_name}</div>
+                                <div class="summaries">点击：{$vo.click}</div>
+                            </div>
+                        </li>
+                        {else}
+                        <li>
+                            <span class="num">{$i}</span>
+                            <a href="{:url('books/index',['id'=>$vo.id])}" target="_blank" class="title">{$vo.book_name}</a>
+                            <div class="pull-right">{$vo.click}点击</div>
+                        </li>
+                        {/if}
+                        {/volist}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="block-wrap">
+        <div class="block js-block-rank">
+            <div class="block-title">新书榜</div>
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a href="#">周榜</a>
+                </li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active">
+                    <ul class="rank-list small">
+                        {volist name="newest_week" id="vo"}
+                        {if $i <= 3}
+                        <li>
+                            <a href="{:url('books/index',['id'=>$vo.id])}" target="_blank" class="thumb">
+                                <img alt="{$vo.book_name}！" class="lazyload  cover" data-original="https://avatar.shubl.com/novel/img_index_recommend/carousel_new/20181019093139136.jpg"
+                                     src="/static/upload/book/{$vo.id}/cover.jpg">
+                            </a>
+                            <div class="book-info">
+                                <a href="{:url('books/index',['id'=>$vo.id])}" target="_blank" class="title title-l2">{$vo.book_name}</a>
+                                <div class="author">作者：{$vo.author.author_name}</div>
+                                <div class="summaries">点击：{$vo.click}</div>
+                            </div>
+                        </li>
+                        {else}
+                        <li>
+                            <span class="num">{$i}</span>
+                            <a href="{:url('books/index',['id'=>$vo.id])}" target="_blank" class="title">{$vo.book_name}</a>
+                            <div class="pull-right">{$vo.click}点击</div>
+                        </li>
+                        {/if}
+                        {/volist}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="block js-block-rank">
+            <div class="block-title">新书榜</div>
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a href="#" >月榜</a>
+                </li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active">
+                    <ul class="rank-list small">
+                        {volist name="newest_month" id="vo"}
+                        {if $i <= 3}
+                        <li>
+                            <a href="{:url('books/index',['id'=>$vo.id])}" target="_blank" class="thumb">
+                                <img alt="{$vo.book_name}！" class="lazyload  cover" data-original="https://avatar.shubl.com/novel/img_index_recommend/carousel_new/20181019093139136.jpg"
+                                     src="/static/upload/book/{$vo.id}/cover.jpg">
+                            </a>
+                            <div class="book-info">
+                                <a href="{:url('books/index',['id'=>$vo.id])}" target="_blank" class="title title-l2">{$vo.book_name}</a>
+                                <div class="author">作者：{$vo.author.author_name}</div>
+                                <div class="summaries">点击：{$vo.click}</div>
+                            </div>
+                        </li>
+                        {else}
+                        <li>
+                            <span class="num">{$i}</span>
+                            <a href="{:url('books/index',['id'=>$vo.id])}" target="_blank" class="title">{$vo.book_name}</a>
+                            <div class="pull-right">{$vo.click}点击</div>
+                        </li>
+                        {/if}
+                        {/volist}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="block js-block-rank">
+            <div class="block-title">新书榜</div>
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a href="#" >总榜</a>
+                </li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active">
+                    <ul class="rank-list small">
+                        {volist name="newest" id="vo"}
+                        {if $i <= 3}
+                        <li>
+                            <a href="{:url('books/index',['id'=>$vo.id])}" target="_blank" class="thumb">
+                                <img alt="{$vo.book_name}！" class="lazyload  cover" data-original="https://avatar.shubl.com/novel/img_index_recommend/carousel_new/20181019093139136.jpg"
+                                     src="/static/upload/book/{$vo.id}/cover.jpg">
+                            </a>
+                            <div class="book-info">
+                                <a href="{:url('books/index',['id'=>$vo.id])}" target="_blank" class="title title-l2">{$vo.book_name}</a>
+                                <div class="author">作者：{$vo.author.author_name}</div>
+                                <div class="summaries">点击：{$vo.click}</div>
+                            </div>
+                        </li>
+                        {else}
+                        <li>
+                            <span class="num">{$i}</span>
+                            <a href="{:url('books/index',['id'=>$vo.id])}" target="_blank" class="title">{$vo.book_name}</a>
+                            <div class="pull-right">{$vo.click}点击</div>
+                        </li>
+                        {/if}
+                        {/volist}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="block-wrap">
+        <div class="block js-block-rank">
+            <div class="block-title">更新榜</div>
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a href="#">周榜</a>
+                </li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active">
+                    <ul class="rank-list small">
+                        {volist name="update_week" id="vo"}
+                        {if $i <= 3}
+                        <li>
+                            <a href="{:url('books/index',['id'=>$vo.id])}" target="_blank" class="thumb">
+                                <img alt="{$vo.book_name}！" class="lazyload  cover" data-original="https://avatar.shubl.com/novel/img_index_recommend/carousel_new/20181019093139136.jpg"
+                                     src="/static/upload/book/{$vo.id}/cover.jpg">
+                            </a>
+                            <div class="book-info">
+                                <a href="{:url('books/index',['id'=>$vo.id])}" target="_blank" class="title title-l2">{$vo.book_name}</a>
+                                <div class="author">作者：{$vo.author.author_name}</div>
+                                <div class="summaries">点击：{$vo.click}</div>
+                            </div>
+                        </li>
+                        {else}
+                        <li>
+                            <span class="num">{$i}</span>
+                            <a href="{:url('books/index',['id'=>$vo.id])}" target="_blank" class="title">{$vo.book_name}</a>
+                            <div class="pull-right">{$vo.click}点击</div>
+                        </li>
+                        {/if}
+                        {/volist}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="block js-block-rank">
+            <div class="block-title">更新榜</div>
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a href="#" >月榜</a>
+                </li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active">
+                    <ul class="rank-list small">
+                        {volist name="update_month" id="vo"}
+                        {if $i <= 3}
+                        <li>
+                            <a href="{:url('books/index',['id'=>$vo.id])}" target="_blank" class="thumb">
+                                <img alt="{$vo.book_name}！" class="lazyload  cover" data-original="https://avatar.shubl.com/novel/img_index_recommend/carousel_new/20181019093139136.jpg"
+                                     src="/static/upload/book/{$vo.id}/cover.jpg">
+                            </a>
+                            <div class="book-info">
+                                <a href="{:url('books/index',['id'=>$vo.id])}" target="_blank" class="title title-l2">{$vo.book_name}</a>
+                                <div class="author">作者：{$vo.author.author_name}</div>
+                                <div class="summaries">点击：{$vo.click}</div>
+                            </div>
+                        </li>
+                        {else}
+                        <li>
+                            <span class="num">{$i}</span>
+                            <a href="{:url('books/index',['id'=>$vo.id])}" target="_blank" class="title">{$vo.book_name}</a>
+                            <div class="pull-right">{$vo.click}点击</div>
+                        </li>
+                        {/if}
+                        {/volist}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="block js-block-rank">
+            <div class="block-title">更新榜</div>
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a href="#" >总榜</a>
+                </li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active">
+                    <ul class="rank-list small">
+                        {volist name="update" id="vo"}
+                        {if $i <= 3}
+                        <li>
+                            <a href="{:url('books/index',['id'=>$vo.id])}" target="_blank" class="thumb">
+                                <img alt="{$vo.book_name}！" class="lazyload  cover" data-original="https://avatar.shubl.com/novel/img_index_recommend/carousel_new/20181019093139136.jpg"
+                                     src="/static/upload/book/{$vo.id}/cover.jpg">
+                            </a>
+                            <div class="book-info">
+                                <a href="{:url('books/index',['id'=>$vo.id])}" target="_blank" class="title title-l2">{$vo.book_name}</a>
+                                <div class="author">作者：{$vo.author.author_name}</div>
+                                <div class="summaries">点击：{$vo.click}</div>
+                            </div>
+                        </li>
+                        {else}
+                        <li>
+                            <span class="num">{$i}</span>
+                            <a href="{:url('books/index',['id'=>$vo.id])}" target="_blank" class="title">{$vo.book_name}</a>
+                            <div class="pull-right">{$vo.click}点击</div>
+                        </li>
+                        {/if}
+                        {/volist}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

@@ -1,0 +1,285 @@
+{extend name="pub/mbase" /}
+{block name="content"}
+<div class="bg-gray  before-banner-footer" style="padding-top:0.3195rem">
+    <div class="container">
+        <a class="block-title" onclick="toggleIndex('J_BookList',this)">
+            点击<span style="color: red">总</span>榜
+            <span class="pull-right text-muted">
+                <span class="showhide">展开</span><i class="iconfont icon-arrow-right"></i>
+            </span>
+        </a>
+    </div>
+    <div id="J_BookList" class="container" style="display: none;">
+        <ul class="book-list book-list-vetical">
+            {volist name="most_click" id="vo"}
+            <li>
+                <a href="{:url('books/index',['id'=>$vo.id])}">
+                    <span class="thumb">
+                        <img data-original="/static/upload/book/{$vo.id}/cover.jpg"
+                             src="https://s1.ax1x.com/2018/12/13/FN8WLQ.jpg" alt="{$vo.book_name}" class="lazyload cover" style="">
+                    </span>
+                    <div class="info">
+                        <span class="title">{$vo.book_name}</span>
+                        <div><span class="author">{$vo.author.author_name}</span></div>
+                        <div class="summaries">
+                            {$vo.summary}
+                        </div>
+                    </div>
+                </a>
+            </li>
+            {/volist}
+        </ul>
+    </div>
+
+    <div class="container">
+        <a class="block-title" onclick="toggleIndex('J_BookList2',this)">
+            点击<span style="color: deepskyblue">周</span>榜
+            <span class="pull-right text-muted">
+                <span class="showhide">展开</span><i class="iconfont icon-arrow-right"></i>
+            </span>
+        </a>
+    </div>
+    <div id="J_BookList2" class="container" style="display: none;">
+        <ul class="book-list book-list-vetical">
+            {volist name="most_click_week" id="vo"}
+            <li>
+                <a href="{:url('books/index',['id'=>$vo.id])}">
+                    <span class="thumb">
+                        <img data-original="/static/upload/book/{$vo.id}/cover.jpg"
+                             src="https://s1.ax1x.com/2018/12/13/FN8WLQ.jpg" alt="{$vo.book_name}" class="lazyload cover" style="">
+                    </span>
+                    <div class="info">
+                        <span class="title">{$vo.book_name}</span>
+                        <div><span class="author">{$vo.author.author_name}</span></div>
+                        <div class="summaries">
+                            {$vo.summary}
+                        </div>
+                    </div>
+                </a>
+            </li>
+            {/volist}
+        </ul>
+    </div>
+
+    <div class="container">
+        <a class="block-title" onclick="toggleIndex('J_BookList3',this)">
+            点击<span style="color: green">月</span>榜
+            <span class="pull-right text-muted">
+                <span class="showhide">展开</span><i class="iconfont icon-arrow-right"></i>
+            </span>
+        </a>
+    </div>
+    <div id="J_BookList3" class="container" style="display: none;">
+        <ul class="book-list book-list-vetical">
+            {volist name="most_click_month" id="vo"}
+            <li>
+                <a href="{:url('books/index',['id'=>$vo.id])}">
+                    <span class="thumb">
+                        <img data-original="/static/upload/book/{$vo.id}/cover.jpg"
+                             src="https://s1.ax1x.com/2018/12/13/FN8WLQ.jpg" alt="{$vo.book_name}" class="lazyload cover" style="">
+                    </span>
+                    <div class="info">
+                        <span class="title">{$vo.book_name}</span>
+                        <div><span class="author">{$vo.author.author_name}</span></div>
+                        <div class="summaries">
+                            {$vo.summary}
+                        </div>
+                    </div>
+                </a>
+            </li>
+            {/volist}
+        </ul>
+    </div>
+
+    <div class="container">
+        <a class="block-title" onclick="toggleIndex('J_BookList4',this)">
+            新书<span style="color: red">总</span>榜
+            <span class="pull-right text-muted">
+                <span class="showhide">展开</span><i class="iconfont icon-arrow-right"></i>
+            </span>
+        </a>
+    </div>
+    <div id="J_BookList4" class="container" style="display: none;">
+        <ul class="book-list book-list-vetical">
+            {volist name="newest" id="vo"}
+            <li>
+                <a href="{:url('books/index',['id'=>$vo.id])}">
+                    <span class="thumb">
+                        <img data-original="/static/upload/book/{$vo.id}/cover.jpg"
+                             src="https://s1.ax1x.com/2018/12/13/FN8WLQ.jpg" alt="{$vo.book_name}" class="lazyload cover" style="">
+                    </span>
+                    <div class="info">
+                        <span class="title">{$vo.book_name}</span>
+                        <div><span class="author">{$vo.author.author_name}</span></div>
+                        <div class="summaries">
+                            {$vo.summary}
+                        </div>
+                    </div>
+                </a>
+            </li>
+            {/volist}
+        </ul>
+    </div>
+
+    <div class="container">
+        <a class="block-title" onclick="toggleIndex('J_BookList5',this)">
+            新书<span style="color: deepskyblue">周</span>榜
+            <span class="pull-right text-muted">
+                <span class="showhide">展开</span><i class="iconfont icon-arrow-right"></i>
+            </span>
+        </a>
+    </div>
+    <div id="J_BookList5" class="container" style="display: none;">
+        <ul class="book-list book-list-vetical">
+            {volist name="newest_week" id="vo"}
+            <li>
+                <a href="{:url('books/index',['id'=>$vo.id])}">
+                    <span class="thumb">
+                        <img data-original="/static/upload/book/{$vo.id}/cover.jpg"
+                             src="https://s1.ax1x.com/2018/12/13/FN8WLQ.jpg" alt="{$vo.book_name}" class="lazyload cover" style="">
+                    </span>
+                    <div class="info">
+                        <span class="title">{$vo.book_name}</span>
+                        <div><span class="author">{$vo.author.author_name}</span></div>
+                        <div class="summaries">
+                            {$vo.summary}
+                        </div>
+                    </div>
+                </a>
+            </li>
+            {/volist}
+        </ul>
+    </div>
+
+    <div class="container">
+        <a class="block-title" onclick="toggleIndex('J_BookList6',this)">
+            新书<span style="color: green">月</span>榜
+            <span class="pull-right text-muted">
+                <span class="showhide">展开</span><i class="iconfont icon-arrow-right"></i>
+            </span>
+        </a>
+    </div>
+    <div id="J_BookList6" class="container" style="display: none;">
+        <ul class="book-list book-list-vetical">
+            {volist name="newest_month" id="vo"}
+            <li>
+                <a href="{:url('books/index',['id'=>$vo.id])}">
+                    <span class="thumb">
+                        <img data-original="/static/upload/book/{$vo.id}/cover.jpg"
+                             src="https://s1.ax1x.com/2018/12/13/FN8WLQ.jpg" alt="{$vo.book_name}" class="lazyload cover" style="">
+                    </span>
+                    <div class="info">
+                        <span class="title">{$vo.book_name}</span>
+                        <div><span class="author">{$vo.author.author_name}</span></div>
+                        <div class="summaries">
+                            {$vo.summary}
+                        </div>
+                    </div>
+                </a>
+            </li>
+            {/volist}
+        </ul>
+    </div>
+
+    <div class="container">
+        <a class="block-title" onclick="toggleIndex('J_BookList7',this)">
+            更新<span style="color: red">总</span>榜
+            <span class="pull-right text-muted">
+                <span class="showhide">展开</span><i class="iconfont icon-arrow-right"></i>
+            </span>
+        </a>
+    </div>
+    <div id="J_BookList7" class="container" style="display: none;">
+        <ul class="book-list book-list-vetical">
+            {volist name="update" id="vo"}
+            <li>
+                <a href="{:url('books/index',['id'=>$vo.id])}">
+                    <span class="thumb">
+                        <img data-original="/static/upload/book/{$vo.id}/cover.jpg"
+                             src="https://s1.ax1x.com/2018/12/13/FN8WLQ.jpg" alt="{$vo.book_name}" class="lazyload cover" style="">
+                    </span>
+                    <div class="info">
+                        <span class="title">{$vo.book_name}</span>
+                        <div><span class="author">{$vo.author.author_name}</span></div>
+                        <div class="summaries">
+                            {$vo.summary}
+                        </div>
+                    </div>
+                </a>
+            </li>
+            {/volist}
+        </ul>
+    </div>
+
+    <div class="container">
+        <a class="block-title" onclick="toggleIndex('J_BookList8',this)">
+            更新<span style="color: deepskyblue">周</span>榜
+            <span class="pull-right text-muted">
+                <span class="showhide">展开</span><i class="iconfont icon-arrow-right"></i>
+            </span>
+        </a>
+    </div>
+    <div id="J_BookList8" class="container" style="display: none;">
+        <ul class="book-list book-list-vetical">
+            {volist name="update_week" id="vo"}
+            <li>
+                <a href="{:url('books/index',['id'=>$vo.id])}">
+                    <span class="thumb">
+                        <img data-original="/static/upload/book/{$vo.id}/cover.jpg"
+                             src="https://s1.ax1x.com/2018/12/13/FN8WLQ.jpg" alt="{$vo.book_name}" class="lazyload cover" style="">
+                    </span>
+                    <div class="info">
+                        <span class="title">{$vo.book_name}</span>
+                        <div><span class="author">{$vo.author.author_name}</span></div>
+                        <div class="summaries">
+                            {$vo.summary}
+                        </div>
+                    </div>
+                </a>
+            </li>
+            {/volist}
+        </ul>
+    </div>
+
+    <div class="container">
+        <a class="block-title" onclick="toggleIndex('J_BookList9',this)">
+            更新<span style="color: green">月</span>榜
+            <span class="pull-right text-muted">
+                <span class="showhide">展开</span><i class="iconfont icon-arrow-right"></i>
+            </span>
+        </a>
+    </div>
+    <div id="J_BookList9" class="container" style="display: none;">
+        <ul class="book-list book-list-vetical">
+            {volist name="update_month" id="vo"}
+            <li>
+                <a href="{:url('books/index',['id'=>$vo.id])}">
+                    <span class="thumb">
+                        <img data-original="/static/upload/book/{$vo.id}/cover.jpg"
+                             src="https://s1.ax1x.com/2018/12/13/FN8WLQ.jpg" alt="{$vo.book_name}" class="lazyload cover" style="">
+                    </span>
+                    <div class="info">
+                        <span class="title">{$vo.book_name}</span>
+                        <div><span class="author">{$vo.author.author_name}</span></div>
+                        <div class="summaries">
+                            {$vo.summary}
+                        </div>
+                    </div>
+                </a>
+            </li>
+            {/volist}
+        </ul>
+    </div>
+</div>
+{include file="pub/lazyload" /}
+<script>
+    function toggleIndex(cls,obj) {
+        $('#'+cls).toggle();
+        if ($(obj).find('span .showhide').text() == '展开') {
+            $(obj).find('span .showhide').text('收拢');
+        } else {
+            $(obj).find('span .showhide').text('展开');
+        }
+    }
+</script>
+{/block}

@@ -1,0 +1,273 @@
+{extend name="pub/mbase" /}
+{block name="css"}
+<style>
+    html, body {
+        height: 100%;
+    }
+
+    .container + .container {
+        margin-top: 0.3195rem;
+    }
+
+    #book_info {
+        margin-bottom: 0.639rem;
+        position: relative;
+    }
+
+    #book_info:after {
+        clear: both;
+        content: "";
+        display: table;
+    }
+
+    #book_info .thumb {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 2.60925rem;
+        height: 3.46125rem;
+        background: #8f8f8f;
+        overflow: hidden;
+    }
+
+    #book_info .thumb img {
+        width: 100%;
+        height: auto;
+        margin: auto 0;
+    }
+
+    #book_info .info {
+        margin-left: 2.92875rem; /* 196+24*/
+        min-height: 3.46125rem;
+        font-size: 0.3195rem;
+        line-height: 1.6;
+    }
+
+    #book_info .info > div + div {
+        margin-top: 0.426rem;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    #book_info .info .name {
+        font-size: 0.426rem;
+        color: #333;
+    }
+
+    #book_info .info span + span {
+        margin-left: 0.15975rem;
+        padding-left: 0.15975rem;
+        border-left: solid 1px #333;
+    }
+
+    #book_info + div {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    #book_info + div > .btn {
+        border-radius: 0.15975rem;
+        height: 0.7321875rem;
+        line-height: 0.7321875rem;
+        width: 30%;
+    }
+
+    #book_info [class*='btn-outline-'] {
+        border-width: 1px;
+        border-radius: 0.079875rem;
+        margin-right: 0.26625rem;
+    }
+
+    .block-title .text-muted {
+        font-size: 0.37275rem;
+    }
+
+    .container + .container {
+        margin-top: 0.3195rem;
+    }
+
+    #total {
+        height: 1.11825rem;
+        line-height: 1.11825rem;
+    }
+
+    .section-title {
+        padding: 0 0.26625rem;
+        font-size: 0.399375rem;
+        height: 1.038375rem;
+        line-height: 1.038375rem;
+    }
+
+    .list {
+        width: 100%;
+        background: #fff;
+    }
+
+    .list li {
+        height: 1.724125rem;
+        padding: 0.3195rem 0.26625rem;
+        border-bottom: solid 1px #efefef;
+        font-size: 0.399375rem;
+        text-align: right;
+        line-height: 1;
+    }
+
+    .list li:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    .list li .pull-left {
+        text-align: left;
+    }
+
+    .list li p:not(:first-child) {
+        margin-top: 0.3195rem;
+    }
+
+    .list li.disabled {
+        color: #999 !important;
+    }
+
+    .list li {
+        width: 100%;
+    }
+
+    .list li .chapter-title {
+        width: 6.66875rem;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .list li.current .chapter-title {
+        color: #fa7298;
+    }
+</style>
+{/block}
+{block name="content"}
+<div class="bg-gray" style="padding-top:0.3195rem;">
+    <div class="container" style="padding:0.426rem 0.26625rem;">
+        <div id="book_info">
+            <div class="thumb">
+                <img class="lazyload cover"
+                     data-original="/static/upload/book/{$book.id}/cover.jpg"
+                     src="https://s1.ax1x.com/2018/12/13/FN8WLQ.jpg" alt="{$book.book_name}" style="">
+            </div>
+            <div class="info">
+                <div><h1 class="name">{$book.book_name}</h1></div>
+                <div class="author">作者：{$book.author.author_name}</div>
+                <div class="numbers">
+                    <span>{$book.click}点击</span>
+                </div>
+                <div>
+                    {volist name="tags" id="vo" key="k"}
+                    {if $k % 2 == 0}
+                    <button class="J_Tag btn btn-mini btn-outline-purple">{$vo}</button>
+                    {else /}
+                    <button class="J_Tag btn btn-mini btn-outline-primary">{$vo}</button>
+                    {/if}
+                    {/volist}
+                </div>
+            </div>
+        </div>
+        <div>
+            <button class="J_Favor btn btn-outline-default">
+                <span class="J_FavorText">放入书架</span>
+            </button>
+            <button class="btn btn-outline-default J_SubscribeAll">全本订阅</button>
+            <a href="{:url('chapters/index',['id' => $start])}" class="btn btn-primary">开始阅读</a>
+        </div>
+    </div>
+    <div class="container">
+        <a class="block-title" onclick="toggleIndex()">
+            目录
+            <span class="pull-right text-muted">
+                <span class="showhide">展开</span><i class="iconfont icon-arrow-right"></i>
+            </span>
+        </a>
+    </div>
+    <div class="container book-index" style="display: none">
+        <div class="section-title">共137章</div>
+        <ul class="list">
+            {volist name="book.chapters" id="vo"}
+            <li class="J_Chapter">
+                <a href="{:url('chapters/index',['id'=>$vo.id])}">
+                    <div class="pull-left">
+                        <p class="chapter-title">{$vo.chapter_name}</p>
+                        <p class="small text-muted">更新：{$vo.update_time}</p>
+                    </div>
+                </a>
+            </li>
+            {/volist}
+        </ul>
+    </div>
+    <div class="container">
+        <div class="block-title">简介</div>
+        <div class="text-muted J_DescContent">
+            {$book.summary}
+        </div>
+        <div>
+            <a class="more pull-right text-muted J_ShowAllBar">更多&gt;&gt;</a>
+        </div>
+    </div>
+    <div class="container">
+        <a href="#" class="block-title">
+            作者
+            <span class="pull-right text-muted">
+          <i style="display:inline-block;border-radius:50%;width:0.426rem;height:0.426rem;content:&#39;&#39;;background:#ffac83; vertical-align:middle;"></i>
+            {$book.author.author_name}<i class="iconfont icon-arrow-right"></i>
+        </span>
+        </a>
+    </div>
+
+    <div class="container">
+        <div class="block-title">
+            <span>作者文集</span>
+        </div>
+        <ul class="book-list book-list-vetical">
+            {volist name="book.author.books" id="vo" lenth="5"}
+            <li>
+                <a href="{:url('books/index',['id'=>$vo.id])}">
+                        <span class="thumb">
+                           <img data-original="/static/upload/book/{$vo.id}/cover.jpg"
+                                src="https://s1.ax1x.com/2018/12/13/FN8WLQ.jpg" alt="{$vo.book_name}" class="lazyload cover" style="">
+                        </span>
+                    <div class="info">
+                        <span class="title">{$vo.book_name}</span>
+                        <div class="author">{$vo.author.author_name}</div>
+                        <div class="summaries">
+                            {$vo.summary}
+                        </div>
+                    </div>
+                </a>
+            </li>
+            {/volist}
+        </ul>
+    </div>
+</div>
+{include file="pub/lazyload" /}
+<script>
+    $(function () {
+        $(".J_ShowAllBar").click(function () {
+            $(".J_DescContent").css("max-height", "100%");
+            $(".J_ShowAllBar").hide();
+        })
+
+    });
+
+    function toggleIndex() {
+        $('.book-index').toggle();
+        if ($('.showhide').text() == '展开') {
+            $('.showhide').text('收拢');
+        } else {
+            $('.showhide').text('展开');
+        }
+    }
+
+    function more() {
+        $('.J_Chapter.hide').show();
+    }
+</script>
+{/block}

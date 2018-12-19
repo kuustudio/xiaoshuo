@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" data-dpr="1" style="font-size: 36px;">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>{$title}|default="免费言情小说，耽美小说-{$site_name}"}</title>
+    <meta name="description" content="{$desc|default='言情小说吧提供最新最全免费的全本言情小说,耽美小说'}">
+    <link rel="shortcut icon" href="/static/images/ShuDan_Icon_32_R.png">
+    <link rel="stylesheet" type="text/css" href="/static/css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/mstyle.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/grid.css">
+    {block name="css"}{/block}
+    <script src="/static/js/jquery-3.2.1.min.js"></script>
+    <script src="/static/js/flexible.js"></script>
+    <script src="/static/js/jquery.uiAlertView-1.0.0.js"></script>
+	<script type="text/javascript">
+        var SD = SD || {};
+        SD.config = {jsPath:'http://m.shubl.com/resources/js', rootPath:'http://m.shubl.com/'};
+        SD.reader_other_info = {"exp_lv_list":{"1":"\u65e0\u540d\u5c0f\u53d7","2":"\u521d\u5165\u8150\u95e8","3":"\u521d\u7aa5\u8150\u5f84","4":"\u767d\u53d7\u8d77\u5bb6","5":"\u4e00\u7247\u803d\u5fc3","6":"\u9e33\u9e33\u76f8\u62b1","7":"\u803d\u7f8e\u60c5\u957f","8":"\u53ef\u653b\u53ef\u53d7","9":"\u6709\u8150\u65e0\u7c7b","10":"\u8150\u5982\u4e1c\u6d77","11":"\u803d\u7f8e\u4e3a\u5c0a","12":"\u65e0\u53cc\u7ec5\u58eb","13":"\u653b\u5fb7\u65e0\u91cf","14":"\u4e07\u53d7\u65e0\u7586","15":"\u51fa\u5165\u5e73\u5b89"},"vip_lv_list":["\u666e\u901a","\u4f1a\u5458","\u521dV","\u9ad8V","\u94bbV"]}
+	</script>
+    <script src="/static/js/base.js"></script>
+</head>
+<body style="font-size: 12px;">
+<div id="global_search_body">
+    <form id="search_header" method="get" target="_self" action="{:url('index/search')}">
+        <div class="left" style="width: 80%">
+            <div class="search-wrap center">
+                <input class="input" type="text" name="keyword" id="search_book_input" value="" placeholder="输入你感兴趣的作者作品">
+                <a class="search"><i class="iconfont icon-sousuo"></i></a>
+            </div>
+        </div>
+        <div class="right" style="top:0.37274999999999997rem;">
+            <a id="search_close_btn">取消</a>
+        </div>
+    </form>
+</div>
+{include file="pub/m_menu" /}
+<div id="header">
+    <div class="left">
+        <a id="prev_btn" href="javascript:history.back();"><i class="iconfont icon-arrow-left"></i></a>
+    </div>
+    <span>{$header_title}</span>
+    <div class="right">
+        <a href="javascript:;" id="search_btn"><i class="iconfont icon-sousuo"></i></a>
+        <a href="javascript:;" id="list_btn"><i class="iconfont icon-menu"></i></a>
+    </div>
+</div>
+{block name="content"}{/block}
+</body>
+</html>

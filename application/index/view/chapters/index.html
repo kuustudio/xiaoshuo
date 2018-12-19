@@ -1,0 +1,256 @@
+<html lang="en" style="background-color: rgb(48, 48, 54);">
+<head>
+    <meta charset="UTF-8">
+    <title>{$chapter.chapter_name}</title>
+    <meta name="description" content="{$chapter.book.summary}">
+    <link rel="shortcut icon" href="/static/images/ShuDan_Icon_32_R.png">
+
+    <link rel="stylesheet" type="text/css" href="/static/css/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/ui.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/static/js/jquery-ui.min.js"></script>
+
+</head>
+<body style="background-color: rgb(48, 48, 54);">
+
+<div id="dialog-tip" class="dialog_box">
+    <div class="dialog-tip-text"></div>
+    <a class="close-btn"> X </a>
+</div>
+
+<style>
+    .bread {
+        font-size: 0.75rem;
+        padding: 1.25rem 2rem 0 2rem;
+    }
+
+    .article-title {
+        font-size: 28px;
+        margin: 3rem 0 1.315rem 0;
+        text-align: center;
+    }
+
+    .article-info {
+        text-align: center;
+        font-size: 0.875rem;
+    }
+
+    .article-info span {
+        text-align: center;
+        padding-right: 2rem;
+    }
+
+    .article-content {
+        margin: 4.875rem 5rem 3rem 5rem;
+        font-size: 1rem;
+        line-height: 2rem;
+    }
+
+    .article-content p {
+        position: relative;
+        margin: 0;
+        padding: 8px 0;
+    }
+
+    .article-content p:after {
+        position: absolute;
+        display: block;
+        height: 100%;
+        top: 0;
+        right: -40px;
+        border-right: solid 1px #d7d7d7;
+        content: '';
+        z-index: 0;
+    }
+
+    /*.article-content p > .content {*/
+    /*display: block;*/
+    /*text-indent: 32px;*/
+    /*}*/
+    .num {
+        cursor: pointer;
+        display: block;
+        position: absolute;
+        bottom: 10px;
+        right: -48px;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: #d7d7d7;
+        z-index: 1;
+        text-align: center;
+    }
+
+    .num.num1 {
+        right: -52px;
+        width: 26px;
+        height: 26px;
+        line-height: 26px;
+        background-color: #fa7298;
+        color: #fff;
+    }
+
+    /*vip章节作者的话吐槽start*/
+    #J_ImgRead .author_say:after {
+        right: 0px;
+    }
+
+    #J_ImgRead .author_say .num {
+        right: -8px;
+    }
+
+    #J_ImgRead .author_say .num.num1 {
+        right: -12px;
+    }
+
+
+    .pages {
+        text-align: center;
+        margin-bottom: 8rem;
+    }
+
+    .pages .btn {
+        width: 10.625rem;
+        border-radius: 0;
+    }
+
+    .pages .btn + .btn {
+        margin-left: 7.625rem;
+    }
+
+    .pages .btn.no {
+        background: #b4b4b4 none repeat scroll 0 0;
+    }
+
+    .operations {
+        position: fixed;
+        right: calc((100% - 1150px) / 2 - 56px);
+        bottom: 30px;
+    }
+
+    .operations .btn {
+        display: block;
+        width: 40px;
+        height: 45px;
+        line-height: 42px;
+        padding: 0;
+        color: #999;
+        border-radius: 3px;
+        border: solid 1px #999;
+        background: transparent;
+        outline: none;
+    }
+
+    .operations .btn:hover {
+        color: #fa7298;
+    }
+
+    .operations .btn.favored {
+        color: #fa7298;
+    }
+
+    .btn + .btn-group-vertical,
+    .btn-group-vertical + .btn-group-vertical {
+        margin-top: 20px;
+    }
+
+    .operations .btn .iconfont {
+        font-size: 24px;
+    }
+
+    .ui-dialog-title-bar {
+        font-size: 18px;
+        padding: 7px 0 10px 0;
+        border-bottom: solid 1px #eee;
+    }
+
+    .ui-dialog-title-bar .iconfont, .icon-close {
+        font-size: 20px;
+        color: #999;
+    }
+
+    /* 设置页面 */
+    #dialog_settings .btn + .btn {
+        margin-left: 16px;
+    }
+
+    .book-read-box { background-color:#fff;}
+    .book-read-box .read-bd i.num {border-color: #fff;}
+    .book-read-box .read-side-bar .btn { background:#fff;}
+    .book-read-box .read-side-bar .active {background: #fff;}
+    .book-read-box .book-read-shang { background:#fff; border-top: 1px solid #fff;}
+    .chapter-comment {background-color: #fff;}
+
+</style>
+<div class="book-read-box container white-bg">
+    <div class="bread"><a href="/">首页</a> &gt;
+        <a href="{:url('books/index',['id'=>$chapter.book_id])}">{$chapter.book.book_name}</a> &gt;
+        {$chapter.chapter_name}
+    </div>
+    <div class="article-title">{$chapter.chapter_name}</div>
+    <div class="article-info">
+        <span>作者：{$chapter.book.author.author_name}</span>
+        <span>发布日期:{$chapter.book.create_time}</span>
+        <span>更新日期:{$chapter.book.update_time}</span>
+    </div>
+    <div class="article-content" id="J_BookCnt">
+        <div class="read-bd" id="J_BookRead" style="font-size: 18px;">
+            {$content|raw}
+        </div>
+    </div>
+
+    <div class="article-actions">
+        <a href="#"><span>荐</span></a>
+        <a href="#"><span>赏</span></a>
+        <a href="#"><span>催</span></a>
+        <a href="#"><span>票</span></a>
+        <a href="#"><span>订</span></a>
+    </div>
+
+    <div class="pages">
+        {if $prev != "null"}
+        <button onclick="javascript:location.href='{:url(\'chapters/index\',[\'id\'=>$prev.id])}';"
+                class="btn btn-primary btn-large">上一章
+        </button>
+        {/if}
+        <button class="btn btn-large"
+                onclick="javascript:location.href='{:url(\'books/index\',[\'id\'=>$chapter.book_id])}';">目录
+        </button>
+        {if $next != "null"}
+        <button onclick="javascript:location.href='{:url(\'chapters/index\',[\'id\'=>$next.id])}'"
+                class="btn btn-primary btn-large">下一章节
+        </button>
+        {/if}
+    </div>
+</div>
+<script>
+    bookshelf = [];
+    bookshelf[0] = {$chapter.book_id};
+    bookshelf[1] = '{$chapter.book.book_name}';
+    bookshelf[2] = {$chapter.id};
+    bookshelf[3] = '{$chapter.chapter_name}';
+    bookshelf[4] = '{$chapter.book.author.author_name}';
+    bookshelf[5] = '{$chapter.book.summary}';
+    window.localStorage.setItem('novel_id' + {$chapter.book_id}, JSON.stringify(bookshelf));
+
+    document.body.oncopy = function () {
+        return false;
+    }; //阻止复制
+    document.body.onselectstart = function () {
+        return false;
+    }; //阻止选中
+    document.oncontextmenu = function () {
+        return false;
+    }; //阻止菜单弹出
+    if (document.images) {
+        for (i = 0; i < document.images.length; i++) {
+            document.images[i].onmousedown = function () {
+                return false;
+            };
+        }
+    }
+</script>
+</body>
+</html>
