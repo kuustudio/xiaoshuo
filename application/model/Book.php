@@ -33,6 +33,11 @@ class Book extends Model
 
     public function setBooknameAttr($value)
     {
-        return trim($value);
+        return trim(strip_tags($value));
     }
+
+    public function setSummaryAttr($value){
+        return trim(strip_tags($value));
+    }
+
 }

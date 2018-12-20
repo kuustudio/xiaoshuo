@@ -78,15 +78,16 @@ class Index extends Base
     }
 
     public function search($keyword){
-        $books = cache('searchresult');
+        $books = cache('searchresult'.$keyword);
         if (!$books){
             $books = $this->bookService->searchByName($keyword);
-            cache('searchresult',$books);
+            cache('searchresult'.$keyword,$books);
         }
         $this->assign([
             'books' => $books,
             'header_title' =>'搜索：'. $keyword,
-            'count' => count($books)
+            'count' => count($books),
+            'title' => '小说搜索'
         ]);
         return view($this->tpl);
     }

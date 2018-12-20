@@ -21,7 +21,7 @@
     <form id="search_header" method="get" target="_self" action="{:url('index/search')}">
         <div class="left" style="width: 80%">
             <div class="search-wrap center">
-                <input class="input" type="text" name="keyword" id="search_book_input" value="" placeholder="输入你感兴趣的作者作品">
+                <input class="input" type="text" name="keyword" id="search_book_input" value="" placeholder="输入你感兴趣的作品">
                 <a class="search"><i class="iconfont icon-sousuo"></i></a>
             </div>
         </div>
@@ -107,8 +107,8 @@
     </div>
 
     <form id="global_search" class="center" method="get" target="_self" action="{:url('index/search')}">
-        <input type="text" name="key" value="" class="input input-primary" placeholder="标题、作者、关键字">
-        <a class="search" onclick="document.getElementById(&#39;global_search&#39;).submit()"><i class="iconfont icon-sousuo"></i></a>
+        <input type="text" name="keyword" value="" class="input input-primary" placeholder="输入你感兴趣的作品">
+        <a class="search" onclick="search()"><i class="iconfont icon-sousuo"></i></a>
     </form>
 
 </div>
@@ -256,6 +256,10 @@
         },
         transitionEnd: function(index, elem) {}
     });
+    
+    function search() {
+        $('#global_search').submit();
+    }
 </script>
 </body>
 </html>

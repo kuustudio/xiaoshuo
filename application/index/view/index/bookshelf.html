@@ -96,8 +96,8 @@
             var $li = '<li><a href="/index/books/index/id/'+arr[0]+'.html" class="thumb">' +
                 '<img data-sizes="108px" class="cover" src="/static/upload/book/'+arr[0]+'/cover.jpg"></a>' +
                 '<div class="book-info"><a class="text-default book-name" href="/index/books/index/id/'+arr[0]+'.html">'+arr[1]+'</a>' +
-                '<div class="smaller text-muted">作者：'+arr[4]+'|最后阅读：'+arr[3]+'</div><div class="summaries">'+arr[5]+
-                '</div><div class="buttons"><a class="btn btn-primary btn-large" href="/index/chapters/index/id/'+arr[2]+'.html">继续阅读</a></div></li>';
+                '<div class="smaller text-muted">作者：'+arr[4]+'</div><div class="smaller text-muted">最后阅读：'+arr[3]+'</div>'+
+                '<div class="buttons"><a class="btn btn-primary btn-large" href="/index/chapters/index/id/'+arr[2]+'.html">继续阅读</a></div></li>';
             $("ul.book-list").append($li);
         }
     }

@@ -20,6 +20,14 @@
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">
+                <span class="x-red">*</span>小标签
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" name="tag2" required="" lay-verify="required" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">
                 作者
             </label>
             <div class="layui-input-inline">
@@ -49,6 +57,25 @@
                     <option value="-1">连载中</option>
                     <option value="1">已完结</option>
                 </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">
+                性别
+            </label>
+            <div class="layui-input-inline">
+                <select id="shipping" name="gender" class="valid">
+                    <option value="female">女性</option>
+                    <option value="male">男性</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">
+                采集源
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" name="src" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">

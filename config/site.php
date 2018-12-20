@@ -7,7 +7,7 @@
  */
 
 return [
-    'url' => 'http://www.hanman.co',
+    'url' => 'http://www.yqxs8.cc',
     'site_name' => '言情小说吧',
     'admin' => 'admin',
     'password' => '123456',

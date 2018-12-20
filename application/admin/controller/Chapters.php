@@ -143,14 +143,16 @@ class Chapters extends Base
     private function process($file,$book_id){
         $path = App::getRootPath().'public/static/upload/book/'.$book_id.'/'.$file;
         $content = file_get_contents(urldecode($path));
-        $content = mb_convert_encoding($content, 'UTF-8',
-            mb_detect_encoding($content, 'GBK,gbk,GB2312,gb2312', true));
+        $encoding = mb_detect_encoding($content, "auto");
+        //$content = iconv($encoding,'utf-8',$content);
+        mb_substitute_character("none");
+        mb_convert_encoding($content, 'UTF-8', $encoding);
         $arr = preg_split('/[;\r\n]+/s',$content); //将文本分行转换成数组
         $new = array_chunk($arr,100); //分割成小数组
         $i = 1;
         foreach ($new as $item) {
             $chapter = new Chapter();
-            $chapter->save(['chapter_name' => $i, 'book_id' => $book_id]);
+            $chapter->save(['chapter_name' => '第'.$i.'章', 'book_id' => $book_id]);
             $file = App::getRootPath() . '/public/static/upload/book/'.$book_id.'/'.$chapter->id.'.txt';
             file_put_contents($file,implode("<br />",$item));
             $i++;

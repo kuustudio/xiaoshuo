@@ -21,6 +21,6 @@ class Author extends Model
     }
 
     public function setAuthorNameAttr($value){
-        return trim($value);
+        return trim(strip_tags($value));
     }
 }

@@ -548,7 +548,7 @@ input:focus, input:hover {
   min-height: calc(100vh - 48px - 184px);
 }
 .index-bg {
-  background: #fff8ef url(../images/index_bg.png) center top no-repeat;
+  background: #fff8ef url(https://s1.ax1x.com/2018/12/19/FDasW8.png) center top no-repeat;
 }
 .bl-bg {
   background: #fff8ef url(../images/bl_bg.png) center top no-repeat;
@@ -648,7 +648,8 @@ input:focus, input:hover {
   height: 100%;
 }
 #slide_index .item img {
-  width: 100%;
+  width: 472px;
+  height: 236px;
 }
 .recommend-b {
   float: left;

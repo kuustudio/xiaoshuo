@@ -253,9 +253,7 @@
     bookshelf[2] = {$chapter.id};
     bookshelf[3] = '{$chapter.chapter_name}';
     bookshelf[4] = '{$chapter.book.author.author_name}';
-    bookshelf[5] = '{$chapter.book.summary}';
     window.localStorage.setItem('novel_id' + {$chapter.book_id}, JSON.stringify(bookshelf));
-
     document.body.oncopy = function (){return false;}; //阻止复制
     document.body.onselectstart = function() {return false;}; //阻止选中
     document.oncontextmenu = function() {return false;}; //阻止菜单弹出

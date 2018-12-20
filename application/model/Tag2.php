@@ -15,4 +15,8 @@ class Tag2 extends Model
 {
     protected $pk='id';
     protected $autoWriteTimestamp = 'datetime';
+
+    public function setTagName2Attr($value){
+        return trim(strip_tags($value));
+    }
 }

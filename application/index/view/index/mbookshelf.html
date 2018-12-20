@@ -100,8 +100,7 @@
             var $li = '<li><a href="/index/chapters/index/id/'+arr[2]+'.html">' +
                 '<span class="thumb"><img src="/static/upload/book/'+arr[0]+'/cover.jpg"></span>' +
                 '<div class="info"><span class="title">'+arr[1]+'</span>' +
-                '<div class="author">'+arr[4]+'|最后阅读：'+arr[3]+'</div>' +
-                '<div class="summaries">'+arr[5]+'</div></div></a></li>';
+                '<div class="author">'+arr[4]+'</div><div class="author">最后阅读：'+arr[3]+'</div>';
             $("ul.book-list").append($li);
         }
     }
