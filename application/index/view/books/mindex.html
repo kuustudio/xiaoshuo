@@ -189,7 +189,7 @@
         </a>
     </div>
     <div class="container book-index" style="display: none">
-        <div class="section-title">共137章</div>
+        <div class="section-title">共{:count($book.chapters)}章</div>
         <ul class="list">
             {volist name="book.chapters" id="vo"}
             <li class="J_Chapter">
@@ -206,7 +206,8 @@
     <div class="container">
         <div class="block-title">简介</div>
         <div class="text-muted J_DescContent">
-            {$book.summary}
+            {$book.summary}<br />
+            内容标签：{$book.tag2}
         </div>
         <div>
             <a class="more pull-right text-muted J_ShowAllBar">更多&gt;&gt;</a>

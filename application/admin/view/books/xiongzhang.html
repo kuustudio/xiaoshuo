@@ -1,0 +1,27 @@
+{extend name="pub/base" /}
+{block name="content"}
+<div class="x-body">
+    <form class="layui-form" action="" method="post" enctype="multipart/form-data">
+        <div class="layui-form-item">
+            <label class="layui-form-label">
+                <span class="x-red">*</span>起始书籍ID
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" name="start" required="" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">
+                <span class="x-red">*</span>结束书籍ID
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" name="end" required="" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label"></label>
+            <input type="submit" class="layui-btn" value="提交">
+        </div>
+    </form>
+</div>
+{/block}

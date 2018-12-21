@@ -85,3 +85,18 @@ function http($url){
     $request = Requests::get($url, $headers);
     return $request->body;
 }
+
+function xiongzhang_push($urls){
+    $api = config('site.xiongzhang');
+    $ch = curl_init();
+    $options =  array(
+        CURLOPT_URL => $api,
+        CURLOPT_POST => true,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_POSTFIELDS => implode("\n", $urls),
+        CURLOPT_HTTPHEADER => array('Content-Type: text/plain'),
+    );
+    curl_setopt_array($ch, $options);
+    $result = curl_exec($ch);
+    return $result;
+}

@@ -86,7 +86,7 @@ class Books extends Base
                         mkdir($dir, 0777, true);
                     }
                     $cover = $request->file('cover');
-                    $cover->validate(['size' => 1024000, 'ext' => 'jpg,png,gif'])
+                    $cover->validate(['size' => 1024000, 'ext' => 'jpg,png,gif,jpeg'])
                         ->move($dir, 'cover.jpg');
                     //清理浏览器缓存
                     header("Last-Modified: " . gmdate("D, d M Y H:i:s") . "GMT");
@@ -111,6 +111,7 @@ class Books extends Base
 
     public function update(Request $request)
     {
+        $book = new Book();
         $data = $request->param();
         $validate = new \app\admin\validate\Book();
         if ($validate->check($data)) {
@@ -123,7 +124,7 @@ class Books extends Base
             } else { //如果作者已经存在
                 $data['author_id'] = $author->id;
             }
-            $result = Book::update($data);
+            $result = $book->isUpdate(true)->save($data);
             if ($result) {
                 //标签处理
                 if (!empty($data['tag'])) {
@@ -136,12 +137,12 @@ class Books extends Base
                     }
                 }
                 if (!empty($request->file())) {
-                    $dir = App::getRootPath() . '/public/static/upload/book/' . $data['id'];
+                    $dir = App::getRootPath() . '/public/static/upload/book/' . $book->id;
                     if (!file_exists($dir)) {
                         mkdir($dir, 0777, true);
                     }
                     $cover = $request->file('cover');
-                    $cover->validate(['size' => 1024000, 'ext' => 'jpg,png,gif'])
+                    $cover->validate(['size' => 1024000, 'ext' => 'jpg,png,gif,jpeg'])
                         ->move($dir, 'cover.jpg');
                     //清理浏览器缓存
                     header("Last-Modified: " . gmdate("D, d M Y H:i:s") . "GMT");
@@ -168,4 +169,17 @@ class Books extends Base
         return ['err' => 0, 'msg' => '删除成功'];
     }
 
+    public function xiongzhang(){
+        if ($this->request->isPost()){
+            $urls = [];
+            $start = input('start');
+            $end = input('end');
+            for ($i = $start;$i <= $end; $i++){
+                array_push($urls,config('site.url').'/index/books/index/id/'.$i.'.html') ;
+            }
+            $result = xiongzhang_push($urls);
+            $this->success($result);
+        }
+        return view();
+    }
 }
