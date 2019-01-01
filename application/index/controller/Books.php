@@ -11,13 +11,20 @@ namespace app\index\controller;
 
 use app\model\Book;
 use think\Db;
+use app\service\ChapterService;
 
 class Books extends Base
 {
+    protected $chapterService;
+    protected function initialize()
+    {
+        $this->chapterService = new ChapterService();
+    }
+
     public function index($id){
         $book = cache('book'.$id);
         if ($book == false){
-            $book = Book::with(['author'=>['books'],'chapters'])->find($id);
+            $book = Book::with(['author'=>['books']])->find($id);
             cache('book'.$id,$book);
         }
         $book->click = $book->click + 1;
@@ -39,4 +46,24 @@ class Books extends Base
         ]);
         return view($this->tpl);
     }
+
+    public function chapterlist($book_id,$order){
+        $data = $this->chapterService->getChapters(20,$order,[
+            ['book_id','=',$book_id]
+        ]);
+        $book = cache('book'.$book_id);
+        if ($book == false){
+            $book = Book::with(['author'=>['books']])->find($book_id);
+            cache('book'.$book_id,$book);
+        }
+        $this->assign([
+            'chapters' => $data['chapters'],
+            'count' => $data['count'],
+            'book' => $book,
+            'order' => $order,
+            'header_title' => $book->book_name
+        ]);
+        return view();
+    }
+
 }

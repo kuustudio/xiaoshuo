@@ -46,7 +46,7 @@ class Chapters extends Base
             $this->assign('next', 'null');
         }
         $content = '';
-        if ($chapter->book->src == 'zhuishu'){
+        if ($chapter->book->src == 'zhuishu' || $chapter->book->src == 'danmeixsw'){
             $arr = file(App::getRootPath().'public/static/upload/book/'.$book_id.'/'.$id.'.txt');
             foreach ($arr as $a) {
                 $content = $content.$a.'<br>';

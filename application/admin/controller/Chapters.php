@@ -24,7 +24,7 @@ class Chapters extends Base
 
     public function index($book_id)
     {
-        $data = $this->chapterService->getChapters([
+        $data = $this->chapterService->getAdminChapters([
             ['book_id','=',$book_id]
         ]);
         $this->assign([

@@ -9,6 +9,7 @@
 namespace app\admin\controller;
 
 
+use app\model\Tag2;
 use app\service\AuthorService;
 use app\service\BookService;
 use app\service\TagService;
@@ -181,5 +182,20 @@ class Books extends Base
             $this->success($result);
         }
         return view();
+    }
+
+    public function search(){
+        $keyword = input('book_name');
+        $data = $this->bookService->getPagedBooksAdmin([['book_name','like','%'.$keyword.'%']]);
+        $books = $data['books'];
+        $count = $data['count'];
+        foreach ($books as &$book) {
+            $book['chapter_count'] = count($book->chapters);
+        }
+        $this->assign([
+            'books' => $books,
+            'count' => $count
+        ]);
+        return view('index');
     }
 }

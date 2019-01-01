@@ -181,27 +181,12 @@
         </div>
     </div>
     <div class="container">
-        <a class="block-title" onclick="toggleIndex()">
+        <a class="block-title" href="{:url('books/chapterlist',['book_id'=>$book.id,'order'=>'asc'])}">
             目录
             <span class="pull-right text-muted">
-                <span class="showhide">展开</span><i class="iconfont icon-arrow-right"></i>
+                <span class="showhide">前往</span><i class="iconfont icon-arrow-right"></i>
             </span>
         </a>
-    </div>
-    <div class="container book-index" style="display: none">
-        <div class="section-title">共{:count($book.chapters)}章</div>
-        <ul class="list">
-            {volist name="book.chapters" id="vo"}
-            <li class="J_Chapter">
-                <a href="{:url('chapters/index',['id'=>$vo.id])}">
-                    <div class="pull-left">
-                        <p class="chapter-title">{$vo.chapter_name}</p>
-                        <p class="small text-muted">更新：{$vo.update_time}</p>
-                    </div>
-                </a>
-            </li>
-            {/volist}
-        </ul>
     </div>
     <div class="container">
         <div class="block-title">简介</div>
@@ -258,17 +243,14 @@
 
     });
 
-    function toggleIndex() {
-        $('.book-index').toggle();
-        if ($('.showhide').text() == '展开') {
-            $('.showhide').text('收拢');
-        } else {
-            $('.showhide').text('展开');
-        }
-    }
-
     function more() {
         $('.J_Chapter.hide').show();
     }
+
+    $(document).on('click', '.J_Tag', function(event) {
+        var self = $(this);
+        var tag = self.text();
+        window.location.href = "/index/tags/index?order=last_time&tag="+tag;
+    });
 </script>
 {/block}

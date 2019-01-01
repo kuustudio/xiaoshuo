@@ -1,0 +1,88 @@
+{extend name="pub/mbase" /}
+{block name="css"}
+<style>
+    .container + .container {
+        margin-top: 0.3195rem;
+    }
+    #total {
+        height: 1.11825rem;
+        line-height: 1.11825rem;
+    }
+    .section-title {
+        padding: 0 0.26625rem;
+        font-size: 0.399375rem;
+        height: 1.038375rem;
+        line-height: 1.038375rem;
+    }
+    .list {
+        width: 100%;
+        background: #fff;
+    }
+    .list li {
+        height: 1.724125rem;
+        padding: 0.3195rem 0.26625rem;
+        border-bottom: solid 1px #efefef;
+        font-size: 0.399375rem;
+        text-align: right;
+        line-height: 1;
+    }
+    .list li:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    .list li .pull-left{
+        text-align: left;
+    }
+    .list li p:not(:first-child) {
+        margin-top: 0.3195rem;
+    }
+    .list li.disabled {
+        color: #999 !important;
+    }
+    .list li{
+        width: 100%;
+    }
+    .list li .chapter-title{
+        width: 6.66875rem;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    .list li.current .chapter-title{
+        color: #fa7298;
+    }
+</style>
+{/block}
+{block name="content"}
+<div class="bg-gray before-banner-footer" style="padding-top:0.3195rem;">
+    <div id="total" class="container">
+        全书共{$count}章
+        {if $order == 'asc'}
+        <a href="{:url('books/chapterlist',['book_id'=>$book.id,'order'=>'desc'])}" class="pull-right text-primary">倒序</a>
+        {else /}
+        <a href="{:url('books/chapterlist',['book_id'=>$book.id,'order'=>'asc'])}" class="pull-right text-primary">正序</a>
+        {/if}
+    </div>
+    <ul class="list">
+        {volist name="chapters" id="vo"}
+        <li class="J_Chapter">
+            <a href="{:url('chapters/index',['id' => $vo.id])}">
+                <div class="pull-left">
+                    <p class="chapter-title">{$vo.chapter_name}</p>
+                    <p class="small text-muted">更新：{$vo.create_time}</p>
+                </div>
+                <div class="pull-right">
+                    <p>
+                        阅读
+                    </p>
+                </div>
+            </a>
+        </li>
+        {/volist}
+    </ul>
+    <div class="page">
+        {$chapters|raw}
+    </div>
+</div>
+{/block}

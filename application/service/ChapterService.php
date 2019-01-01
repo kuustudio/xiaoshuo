@@ -11,7 +11,19 @@ namespace app\service;
 use app\model\Chapter;
 class ChapterService
 {
-    public function getChapters($where = '1=1'){
+    public function getChapters($num,$order,$where = '1=1'){
+        $chapters = Chapter::where($where);
+        $pages = $chapters->order('id',$order)->paginate($num,false,[
+            'type'     => 'util\Page',
+            'var_page' => 'page',
+        ]);
+        return [
+            'chapters' => $pages,
+            'count' => $chapters->count(),
+        ];
+    }
+
+    public function getAdminChapters($where = '1=1'){
         $chapters = Chapter::where($where);
         $pages = $chapters->order('id','desc')->paginate(5);
         return [
@@ -19,7 +31,6 @@ class ChapterService
             'count' => $chapters->count(),
         ];
     }
-
     public function findByName($chapter_name){
         return Chapter::where('chapter_name','=',$chapter_name)->find();
     }

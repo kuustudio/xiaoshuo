@@ -40,4 +40,9 @@ class Book extends Model
         return trim(strip_tags($value));
     }
 
+    public function setSrcAttr($value){
+        if (is_null($value) || empty($value)){
+            return '手动';
+        }
+    }
 }

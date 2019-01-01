@@ -28,12 +28,12 @@ class Index extends Base
 
         $hot_pc = cache('homepage_hot_pc');
         if (!$hot_pc){
-            $hot_pc = $this->bookService->getBooks(12,'click');
+            $hot_pc = $this->bookService->getBooks(12,'last_time');
             cache('homepage_hot_pc',$hot_pc);
         }
         $hot_mobile = cache('homepage_hot_mobile ');
         if (!$hot_mobile){
-            $hot_mobile = $this->bookService->getBooks(6,'click');
+            $hot_mobile = $this->bookService->getBooks(6,'last_time');
             cache('homepage_hot_mobile',$hot_mobile);
         }
         $newest_pc = cache('homepage_newest_pc');

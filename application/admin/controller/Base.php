@@ -21,7 +21,6 @@ class Base extends Controller
         }else{
             $this->checkAuth();
         }
-
     }
 
     protected function checkAuth(){

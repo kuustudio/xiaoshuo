@@ -1,6 +1,12 @@
 {extend name="pub/base" /}
 {block name="content"}
 <div class="x-body">
+    <div class="layui-row">
+        <form action="search" class="layui-form layui-col-md12 x-so">
+            <input class="layui-input" placeholder="作品名称" name="book_name">
+            <input class="layui-btn" type="submit" value="搜索">
+        </form>
+    </div>
     <xblock>
         <button class="layui-btn" onclick="x_admin_show('添加书籍','{:url("create")}')"><i class="layui-icon"></i>添加
         </button>
