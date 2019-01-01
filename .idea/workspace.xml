@@ -2,27 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9fe32b36-b383-4dab-b3e4-e462bc231e19" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/application/index/view/books/chapterlist.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/controller/Banners.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/controller/Banners.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/controller/Base.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/controller/Base.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/controller/Books.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/controller/Books.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/admin/controller/Chapters.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/controller/Chapters.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/controller/Juhe.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/books/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/books/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/index/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/index/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/index/controller/Books.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/index/controller/Books.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/index/controller/Chapters.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/index/controller/Chapters.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/index/controller/Index.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/index/controller/Index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/index/view/books/mindex.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/index/view/books/mindex.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/index/view/index/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/index/view/index/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/index/view/index/mindex.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/index/view/index/mindex.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/index/view/pub/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/index/view/pub/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/index/view/pub/mbase.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/index/view/pub/mbase.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/model/Book.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/model/Book.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/service/ChapterService.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/service/ChapterService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/site.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/site.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/static/js/base.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/static/js/base.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -107,29 +90,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Books.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/application/admin/controller/Books.php">
+      <file leaf-file-name="mindex.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/index/view/chapters/mindex.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="564">
-              <caret line="196" column="29" selection-start-line="196" selection-start-column="29" selection-end-line="196" selection-end-column="29" />
-              <folding>
-                <element signature="e#436#625#0#PHP" />
-                <element signature="e#1024#1083#0#PHP" />
-                <element signature="e#1089#3132#0#PHP" />
-                <element signature="e#3138#3285#0#PHP" />
-                <element signature="e#3291#5265#0#PHP" />
-                <element signature="e#5271#5559#0#PHP" />
-                <element signature="e#5565#6002#0#PHP" />
-              </folding>
+            <state relative-caret-position="618">
+              <caret line="255" selection-start-line="255" selection-end-line="255" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/admin/view/books/index.html">
+      <file leaf-file-name="Chapters.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application/index/controller/Chapters.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="39" column="35" selection-start-line="39" selection-start-column="16" selection-end-line="39" selection-end-column="35" />
+            <state relative-caret-position="414">
+              <caret line="51" column="9" lean-forward="true" selection-start-line="51" selection-start-column="9" selection-end-line="51" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -212,13 +186,10 @@
         <option value="$PROJECT_DIR$/application/common.php" />
         <option value="$PROJECT_DIR$/application/admin/view/books/xiongzhang.html" />
         <option value="$PROJECT_DIR$/application/index/view/books/mindex.html" />
-        <option value="$PROJECT_DIR$/application/index/controller/Books.php" />
-        <option value="$PROJECT_DIR$/application/admin/controller/Chapters.php" />
         <option value="$PROJECT_DIR$/application/service/ChapterService.php" />
         <option value="$PROJECT_DIR$/application/index/view/books/chapterlist.html" />
         <option value="$PROJECT_DIR$/application/model/Book.php" />
         <option value="$PROJECT_DIR$/application/admin/controller/Base.php" />
-        <option value="$PROJECT_DIR$/application/index/controller/Chapters.php" />
         <option value="$PROJECT_DIR$/public/static/js/base.js" />
         <option value="$PROJECT_DIR$/application/index/view/pub/base.html" />
         <option value="$PROJECT_DIR$/application/index/view/pub/mbase.html" />
@@ -233,6 +204,9 @@
         <option value="$PROJECT_DIR$/application/service/BookService.php" />
         <option value="$PROJECT_DIR$/application/admin/view/books/search.html" />
         <option value="$PROJECT_DIR$/application/admin/controller/Books.php" />
+        <option value="$PROJECT_DIR$/application/index/controller/Books.php" />
+        <option value="$PROJECT_DIR$/application/admin/controller/Chapters.php" />
+        <option value="$PROJECT_DIR$/application/index/controller/Chapters.php" />
       </list>
     </option>
   </component>
@@ -309,16 +283,45 @@
               <item name="xiaoshuo" type="b2602c69:ProjectViewProjectNode" />
               <item name="xiaoshuo" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="application" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="admin" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="index" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="xiaoshuo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xiaoshuo" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="application" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="index" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="controller" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="xiaoshuo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xiaoshuo" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="application" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="index" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="view" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="xiaoshuo" type="b2602c69:ProjectViewProjectNode" />
               <item name="xiaoshuo" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="application" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="admin" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="index" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="view" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="books" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="xiaoshuo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xiaoshuo" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="application" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="index" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="view" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="chapters" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="xiaoshuo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xiaoshuo" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="application" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="index" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="view" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="index" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="xiaoshuo" type="b2602c69:ProjectViewProjectNode" />
@@ -474,16 +477,19 @@
       <workItem from="1546229859287" duration="272000" />
       <workItem from="1546233888807" duration="315000" />
       <workItem from="1546253172770" duration="2633000" />
+      <workItem from="1546337750520" duration="545000" />
+      <workItem from="1546349459270" duration="1995000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="192474000" />
+    <option name="totallyTimeSpent" value="195014000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25536194" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19235925" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" weight="0.32901135" />
@@ -654,13 +660,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/admin/controller/Chapters.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="32" column="33" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/service/ChapterService.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
@@ -693,20 +692,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="984">
           <caret line="233" column="56" selection-start-line="233" selection-start-column="56" selection-end-line="233" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/index/view/chapters/mindex.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="619">
-          <caret line="255" selection-start-line="255" selection-end-line="255" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/index/controller/Chapters.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="48" column="81" selection-start-line="48" selection-start-column="81" selection-end-line="48" selection-end-column="81" />
         </state>
       </provider>
     </entry>
@@ -759,13 +744,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/index/view/index/mindex.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="166" column="22" selection-start-line="166" selection-start-column="22" selection-end-line="166" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/admin/controller/Juhe.php" />
     <entry file="file://$PROJECT_DIR$/application/admin/view/pub/base.html">
       <provider selected="true" editor-type-id="text-editor">
@@ -802,20 +780,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/index/controller/Books.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="744">
-          <caret line="52" column="11" selection-start-line="52" selection-start-column="11" selection-end-line="52" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/index/controller/Index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="366">
           <caret line="92" column="5" lean-forward="true" selection-start-line="79" selection-start-column="4" selection-end-line="92" selection-end-column="5" />
-          <folding>
-            <element signature="e#277#2452#0#PHP" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -842,21 +810,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/admin/view/books/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
+        <state relative-caret-position="702">
           <caret line="39" column="35" selection-start-line="39" selection-start-column="16" selection-end-line="39" selection-end-column="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/admin/view/books/search.html">
+    <entry file="file://$PROJECT_DIR$/application/admin/view/books/search.html" />
+    <entry file="file://$PROJECT_DIR$/application/index/view/index/mindex.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        <state relative-caret-position="2988">
+          <caret line="166" column="22" selection-start-line="166" selection-start-column="22" selection-end-line="166" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/admin/controller/Books.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="564">
+        <state relative-caret-position="475">
           <caret line="196" column="29" selection-start-line="196" selection-start-column="29" selection-end-line="196" selection-end-column="29" />
           <folding>
             <element signature="e#436#625#0#PHP" />
@@ -867,6 +836,34 @@
             <element signature="e#5271#5559#0#PHP" />
             <element signature="e#5565#6002#0#PHP" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/controller/Books.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="43" column="105" selection-start-line="43" selection-start-column="105" selection-end-line="43" selection-end-column="105" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/view/chapters/mindex.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="618">
+          <caret line="255" selection-start-line="255" selection-end-line="255" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/admin/controller/Chapters.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="161" column="14" selection-start-line="161" selection-start-column="14" selection-end-line="161" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/controller/Chapters.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="51" column="9" lean-forward="true" selection-start-line="51" selection-start-column="9" selection-end-line="51" selection-end-column="9" />
         </state>
       </provider>
     </entry>

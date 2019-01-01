@@ -41,7 +41,7 @@ class Books extends Base
             'tags' => $tags,
             'start' => $start,
             'header_title' => $book->book_name,
-            'title' => $book->book_name.'免费在线阅读',
+            'title' => $book->book_name.'全文阅读'.'-'.$book->book_name.'最新章节'.'-'.$book->author->author_name,
             'desc' => $book->summary
         ]);
         return view($this->tpl);

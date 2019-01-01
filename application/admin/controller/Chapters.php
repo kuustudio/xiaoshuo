@@ -150,11 +150,16 @@ class Chapters extends Base
         $arr = preg_split('/[;\r\n]+/s',$content); //将文本分行转换成数组
         $new = array_chunk($arr,100); //分割成小数组
         $i = 1;
-        foreach ($new as $item) {
+        foreach ($new as $arr) {
             $chapter = new Chapter();
             $chapter->save(['chapter_name' => '第'.$i.'章', 'book_id' => $book_id]);
             $file = App::getRootPath() . '/public/static/upload/book/'.$book_id.'/'.$chapter->id.'.txt';
-            file_put_contents($file,implode("<br />",$item));
+            foreach ($arr as $item) {
+                $handle=fopen($file,"a+");
+                fwrite($handle,$item."\n");
+                fclose($handle);
+            }
+            //file_put_contents($file,implode("<br />",$item));
             $i++;
         }
 
