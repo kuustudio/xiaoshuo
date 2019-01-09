@@ -1,0 +1,61 @@
+{extend name="pub/mbase" /}
+{block name="css"}
+<style>
+    .container + .container {
+        margin-top: 0.3195rem;
+    }
+    #author_info {
+        text-align: center;
+        padding: 0.639rem 0.26625rem;
+    }
+    #author_info .thumb {
+        display: inline-block;
+        width: 2.209875rem;
+        height: 2.209875rem;
+        border-radius: 50%;
+        background: #666;
+        overflow: hidden;
+    }
+    #author_info .thumb img {
+        width: 100%;
+        height: auto;
+    }
+</style>
+{/block}
+{block name="content"}
+<div class="bg-gray before-banner-footer" style="padding-top:0.3195rem">
+    <div id="author_info" class="container">
+        <div class="thumb">
+            <img class="lazyload" src="https://wx2.sinaimg.cn/mw690/ab72f980gy1fy63bnjqxhj202s02sq2x.jpg" style="">
+        </div>
+        <p>{$author.author_name}</p>
+    </div>
+    <div class="container">
+        <div class="block-title">
+            <span>全部作品</span>
+            <!--            <a href="" class="more">更多 &gt;</a>-->
+        </div>
+        <ul class="book-list book-list-vetical">
+            {volist name="author.books" id="vo"}
+            <li>
+                <a href="{:url('books/index',['id'=>$vo.id])}">
+                        <span class="thumb">
+                            <img data-original="/static/upload/book/{$vo.id}/cover.jpg"
+                                 src="https://s1.ax1x.com/2018/12/13/FN8WLQ.jpg" alt="{$vo.book_name}" class="lazyload cover" style="">
+                        </span>
+                    <div class="info">
+                        <span class="title">{$vo.book_name}</span>
+                        <div class="author">{$vo.tag}</div>
+                        <div class="update">更新：{$vo.last_time} </div>
+                        <div class="summaries">
+                            {$vo.last_chapter}
+                        </div>
+                    </div>
+                </a>
+            </li>
+            {/volist}
+        </ul>
+    </div>
+</div>
+{include file="pub/lazyload" /}
+{/block}

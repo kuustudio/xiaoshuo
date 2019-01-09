@@ -67,9 +67,9 @@ class Chapters extends Base
             fwrite($file,$content); //保存TXT文件
             $param = [
                 "id" => $data["book_id"],
-                "update_time" => date("Y-m-d H:i:s", time())
+                "last_time" => date("Y-m-d H:i:s", time())
             ];
-            $book = Book::update($param);
+            Book::update($param);
             $this->redirect('index/jump');
         }else{
             $this->error('新增失败');
@@ -141,15 +141,18 @@ class Chapters extends Base
     }
 
     private function process($file,$book_id){
+        $book = Book::get($book_id);
+        $book->last_time = date("Y-m-d H:i:s", time());
+        $book->isUpdate(true)->save();
+        $chapter_count = count($book->chapters);
         $path = App::getRootPath().'public/static/upload/book/'.$book_id.'/'.$file;
         $content = file_get_contents(urldecode($path));
         $encoding = mb_detect_encoding($content, "auto");
-        //$content = iconv($encoding,'utf-8',$content);
         mb_substitute_character("none");
         mb_convert_encoding($content, 'UTF-8', $encoding);
         $arr = preg_split('/[;\r\n]+/s',$content); //将文本分行转换成数组
-        $new = array_chunk($arr,100); //分割成小数组
-        $i = 1;
+        $new = array_chunk($arr,60); //分割成小数组
+        $i = $chapter_count + 1;
         foreach ($new as $arr) {
             $chapter = new Chapter();
             $chapter->save(['chapter_name' => '第'.$i.'章', 'book_id' => $book_id]);
@@ -159,7 +162,6 @@ class Chapters extends Base
                 fwrite($handle,$item."\n");
                 fclose($handle);
             }
-            //file_put_contents($file,implode("<br />",$item));
             $i++;
         }
 
