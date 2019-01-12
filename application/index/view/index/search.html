@@ -1,5 +1,8 @@
 {extend name="pub/base" /}
-{block name="content"}
+{block name="seo"}
+<title>小说搜索-{$site_name}</title>
+{/block}
+{block name="css"}
 <style>
     .container {
         padding: 0 20px;
@@ -71,6 +74,9 @@
         margin-top: 20px;
     }
 </style>
+{/block}
+{block name="content"}
+
 <div style="padding: 20px 0;font-size:12px;">首页 <span style="padding: 0 0.5rem;"> &gt; </span>搜索 </div>
 
 <form id="book_search_form" action="{:url('index/search')}" method="get" target="_self">

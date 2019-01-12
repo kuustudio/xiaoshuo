@@ -77,7 +77,6 @@ class Rank extends Base
             'update_month' => $update_month,
             'update' => $update,
             'header_title' => '排行榜',
-            'title' => '小说热榜，周榜，月榜'
         ]);
         return view($this->tpl);
     }

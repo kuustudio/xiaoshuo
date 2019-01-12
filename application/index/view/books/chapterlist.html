@@ -1,4 +1,7 @@
 {extend name="pub/mbase" /}
+{block name="seo"}
+<title>{$book.book_name}全文目录-{$book.book_name}最新章节-{$book.author.author_name}-{$site_name}</title>
+{/block}
 {block name="css"}
 <style>
     .container + .container {

@@ -17,8 +17,6 @@ class Authors extends Base
         $this->assign([
             'author' => $author,
             'header_title' => '作者主页',
-            'title' => '作者主页-'.$author->author_name,
-            'desc' => $author->author_name.'作品集'
         ]);
         return view($this->tpl);
     }

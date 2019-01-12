@@ -1,4 +1,8 @@
 {extend name="pub/mbase" /}
+{block name="seo"}
+<title>{$chapter.chapter_name}-{$chapter.book.book_name}-{$chapter.book.author.author_name}-{$site_name}</title>
+<meta name="description" content="正在阅读{$chapter.book.book_name}-{$chapter.chapter_name}">
+{/block}
 {block name="css"}
 <style>
     body{

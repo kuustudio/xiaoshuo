@@ -129,40 +129,46 @@ class Chapters extends Base
         $book_id = $request->param('book_id');
         if ($request->isPost()){
             $file = $request->file('content');
+            $index_file = $request->file('index');
             $dir = App::getRootPath() . '/public/static/upload/book/'.$book_id;
-            $info = $file->move($dir);
-            if ($info){
-                $this->process($info->getSaveName(),$book_id);
-            }
+            $file_info = $file->move($dir);
+            $index_info = $index_file->move($dir);
+            $this->process($file_info->getSaveName(),$index_info->getSaveName(), $book_id);
             $this->redirect('index/jump');
         }
         $this->assign('book_id',$book_id);
         return view();
     }
 
-    private function process($file,$book_id){
+    private function process($file,$idex_file,$book_id){
         $book = Book::get($book_id);
         $book->last_time = date("Y-m-d H:i:s", time());
         $book->isUpdate(true)->save();
-        $chapter_count = count($book->chapters);
-        $path = App::getRootPath().'public/static/upload/book/'.$book_id.'/'.$file;
-        $content = file_get_contents(urldecode($path));
+        //$chapter_count = count($book->chapters);
+        $file_path = App::getRootPath().'public/static/upload/book/'.$book_id.'/'.$file;
+        $index_path = App::getRootPath().'public/static/upload/book/'.$book_id.'/'.$idex_file;
+        $content = file_get_contents(urldecode($file_path)); //实际小说文件
+        $index = file_get_contents(urldecode($index_path)); //目录文件
         $encoding = mb_detect_encoding($content, "auto");
-        mb_substitute_character("none");
-        mb_convert_encoding($content, 'UTF-8', $encoding);
-        $arr = preg_split('/[;\r\n]+/s',$content); //将文本分行转换成数组
-        $new = array_chunk($arr,60); //分割成小数组
-        $i = $chapter_count + 1;
-        foreach ($new as $arr) {
+        $encoding2 = mb_detect_encoding($index, "auto");
+        if ($encoding != 'UTF-8' || $encoding2 != 'UTF-8'){
+            $this->error('上传的文件编码必须是utf-8');
+        }
+        $arr = preg_split('/[;\r\n]+/s',$content); //将小说文本分行转换成数组
+        $index_arr = preg_split('/[;\r\n]+/s',$index); //将目录文本分行转换成数组
+        $split_count = ceil(count($arr)/count($index_arr)); //小说总行数除以章节总行数，算出每章节多少行
+        $new = array_chunk($arr,$split_count); //分割成小数组
+        //$i = $chapter_count + 1;
+        foreach ($new as $key => $value) {
             $chapter = new Chapter();
-            $chapter->save(['chapter_name' => '第'.$i.'章', 'book_id' => $book_id]);
+            $chapter->save(['chapter_name' => $index_arr[$key], 'book_id' => $book_id]);
             $file = App::getRootPath() . '/public/static/upload/book/'.$book_id.'/'.$chapter->id.'.txt';
-            foreach ($arr as $item) {
+            foreach ($value as $item) {
                 $handle=fopen($file,"a+");
                 fwrite($handle,$item."\n");
                 fclose($handle);
             }
-            $i++;
+            //$i++;
         }
 
     }

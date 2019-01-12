@@ -87,7 +87,6 @@ class Index extends Base
             'books' => $books,
             'header_title' =>'搜索：'. $keyword,
             'count' => count($books),
-            'title' => '小说搜索'
         ]);
         return view($this->tpl);
     }
@@ -95,7 +94,6 @@ class Index extends Base
     public function bookshelf(){
         $this->assign([
             'header_title' => '我的书架',
-            'title' => '书架'
         ]);
         return view($this->tpl);
     }

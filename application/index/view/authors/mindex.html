@@ -1,4 +1,8 @@
 {extend name="pub/mbase" /}
+{block name="seo"}
+<title>{$author.author_name}个人主页-{$author.author_name}作品集-{$site_name}</title>
+<meta name="description" content="这里是{$author.author_name}的个人主页，展示ta的所有作品">
+{/block}
 {block name="css"}
 <style>
     .container + .container {

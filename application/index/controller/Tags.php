@@ -38,11 +38,6 @@ class Tags extends Base
             $num = 9;
         }
         $books = $this->bookService->getPagedBooks($map,$order,$num);
-//        $books = cache('tag_books'.$tag.$order.$end);
-//        if (!$books){
-//            $books = $this->bookService->getPagedBooks($map,$order,$num);
-//            cache('tag_books',$books);
-//        }
         $tags = cache('tags');
         if (!$tags){
             $tags = Tag::all();
@@ -60,7 +55,6 @@ class Tags extends Base
             'books' => $books,
             'order' => $order,
             'end' => $end,
-            'title' => '小说分类'.(empty($tag)?'':'-'.$tag)
         ]);
         if (isMobile()){
             if (!empty($tag)){
@@ -97,7 +91,6 @@ class Tags extends Base
             'all_count' => $all_count,
             'end_count' => $end_count,
             'header_title' => '分类',
-            'title' => '小说分类'
         ]);
         return view();
     }

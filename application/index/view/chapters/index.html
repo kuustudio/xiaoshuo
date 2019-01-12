@@ -1,25 +1,10 @@
-<html lang="en" style="background-color: rgb(48, 48, 54);">
-<head>
-    <meta charset="UTF-8">
-    <title>{$chapter.chapter_name}</title>
-    <meta name="description" content="{$chapter.book.summary}">
-    <link rel="shortcut icon" href="/static/images/ShuDan_Icon_32_R.png">
+{extend name="pub/base" /}
+{block name="seo"}
+<title>{$chapter.chapter_name}-{$chapter.book.book_name}-{$chapter.book.author.author_name}-{$site_name}</title>
+<meta name="description" content="正在阅读{$chapter.book.book_name}-{$chapter.chapter_name}">
+{/block}
 
-    <link rel="stylesheet" type="text/css" href="/static/css/jquery-ui.min.css">
-    <link rel="stylesheet" type="text/css" href="/static/css/ui.css">
-    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
-
-    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
-    <script src="/static/js/jquery-ui.min.js"></script>
-
-</head>
-<body style="background-color: rgb(48, 48, 54);">
-
-<div id="dialog-tip" class="dialog_box">
-    <div class="dialog-tip-text"></div>
-    <a class="close-btn"> X </a>
-</div>
-
+{block name="css"}
 <style>
     .bread {
         font-size: 0.75rem;
@@ -184,6 +169,13 @@
     .chapter-comment {background-color: #fff;}
 
 </style>
+{/block}
+{block name="content"}
+<div id="dialog-tip" class="dialog_box">
+    <div class="dialog-tip-text"></div>
+    <a class="close-btn"> X </a>
+</div>
+
 <div class="book-read-box container white-bg">
     <div class="bread"><a href="/">首页</a> &gt;
         <a href="{:url('books/index',['id'=>$chapter.book_id])}">{$chapter.book.book_name}</a> &gt;
@@ -251,5 +243,4 @@
         }
     }
 </script>
-</body>
-</html>
+{/block}
